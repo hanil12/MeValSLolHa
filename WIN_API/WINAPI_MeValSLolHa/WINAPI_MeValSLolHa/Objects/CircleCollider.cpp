@@ -6,6 +6,11 @@ CircleCollider::CircleCollider(Vector2D center, float radius)
 {
 }
 
+void CircleCollider::Update()
+{
+	_center.x += 1;
+}
+
 void CircleCollider::Render(HDC hdc)
 {
 	int left = _center.x - _radius;

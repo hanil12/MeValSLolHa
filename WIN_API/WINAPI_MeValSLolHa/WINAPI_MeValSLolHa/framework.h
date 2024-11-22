@@ -26,4 +26,8 @@ using namespace std;
 using Vector2D = Vector2<float>;
 
 // Objects
+#include "Objects/Line.h"
 #include "Objects/CircleCollider.h"
+#include "Objects/RectCollider.h"
+
+extern Vector2D mousePos;

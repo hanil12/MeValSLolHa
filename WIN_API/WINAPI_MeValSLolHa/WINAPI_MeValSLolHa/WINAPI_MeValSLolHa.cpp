@@ -121,9 +121,11 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 //
 //
+Vector2D mousePos;
 
 shared_ptr<CircleCollider> circle = make_shared<CircleCollider>(Vector2D(500,500), 50);
-
+shared_ptr<RectCollider> rect = make_shared<RectCollider>(Vector2D(500, 500), Vector2D(30, 30));
+shared_ptr<Line> line = make_shared<Line>(Vector2D(500, 500), Vector2D(30, 111));
 // Window Procedure : 윈도우가 진행되는 절차
 // Procedure ... 함수
 // 
@@ -135,8 +137,29 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
     {
+    case WM_CREATE:
+    {
+        SetTimer(hWnd, 1, 1, nullptr); // 1ms 마다 WM_TIMER메시지 Send
+
+        break;
+    }
+
+    case WM_TIMER:
+    {
+        rect->Update();
+        circle->Update();
+        line->Update();
+
+        InvalidateRect(hWnd, nullptr, true);
+
+        break;
+    }
+
     case WM_MOUSEMOVE:
     {
+        mousePos.x = static_cast<float>(LOWORD(lParam));
+        mousePos.y = static_cast<float>(HIWORD(lParam));
+
         break;
     }
 
@@ -166,15 +189,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 2. circle과 동일하게 Render함수를 이용하여 그리기.
 
             // RectCollider
-            Rectangle(hdc, 0, 0, 100, 100);
+            rect->Render(hdc);
         
             // 원 그리기
             circle->Render(hdc);
 
             // 선 그리기
             // Line
-            MoveToEx(hdc, 0, 0, nullptr);
-            LineTo(hdc, 500, 500);
+            line->Render(hdc);
+            line->_end = mousePos;
 
             EndPaint(hWnd, &ps);
         }
