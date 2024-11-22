@@ -48,7 +48,16 @@ public:
 		return x * other.y - y * other.x;
 	}
 	float Length() const { return sqrtf(x * x + y * y); }
+	Vector2<T> NormalVector()
+	{
+		float length = Length();
 
+		Vector2<T> result;
+		result.x = x / length;
+		result.y = y / length;
+
+		return result;
+	}
 
 	T x;
 	T y;

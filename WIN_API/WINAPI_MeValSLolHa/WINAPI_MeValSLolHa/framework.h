@@ -25,6 +25,8 @@ using namespace std;
 
 using Vector2D = Vector2<float>;
 
+#define LERP(start, end, ratio) (end - start) * ratio
+
 // Objects
 #include "Objects/Line.h"
 #include "Objects/CircleCollider.h"
