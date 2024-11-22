@@ -16,5 +16,7 @@ public:
 private:
 	Vector2D	 _center;
 	Vector2D	 _halfSize;
+
+	float		_angle;
 };
 
