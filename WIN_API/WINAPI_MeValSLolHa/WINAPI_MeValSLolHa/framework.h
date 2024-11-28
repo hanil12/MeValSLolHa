@@ -27,6 +27,11 @@ using Vector2D = Vector2<float>;
 
 #define LERP(start, end, ratio) (end - start) * ratio
 
+#define BLACK		 RGB(0,0,0)
+#define WHITE		 RGB(255,255,255)
+#define RED			 RGB(255,0,0)
+#define GREEN		 RGB(0,255,0)
+
 // Objects
 #include "Objects/Line.h"
 #include "Objects/Collider.h"

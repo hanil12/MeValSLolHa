@@ -2,8 +2,9 @@
 #include "CircleCollider.h"
 
 CircleCollider::CircleCollider(Vector2D center, float radius)
-: _center(center), _radius(radius)
+: _radius(radius)
 {
+	_center = center;
 }
 
 void CircleCollider::Update()
@@ -23,6 +24,8 @@ void CircleCollider::Update()
 
 void CircleCollider::Render(HDC hdc)
 {
+	SelectObject(hdc, _pens[_curColor]);
+
 	int left = _center.x - _radius;
 	int right = _center.x + _radius;
 	int top = _center.y - _radius;

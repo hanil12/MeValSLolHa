@@ -1,16 +1,15 @@
 #pragma once
 
 
-class CircleCollider
+class CircleCollider : public Collider
 {
 public:
 	CircleCollider(Vector2D center, float radius);
 
-	void Update();
-	void Render(HDC hdc);
+	virtual void Update() override;
+	virtual void Render(HDC hdc) override;
 
 private:
-	Vector2D	 _center;
 	float		 _radius;
 };
 

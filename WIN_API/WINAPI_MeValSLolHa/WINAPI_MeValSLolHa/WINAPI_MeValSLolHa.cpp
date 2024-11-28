@@ -123,16 +123,13 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 Vector2D mousePos;
 
-shared_ptr<CircleCollider> circle = make_shared<CircleCollider>(Vector2D(500,500), 50);
-shared_ptr<RectCollider> rect = make_shared<RectCollider>(Vector2D(500, 500), Vector2D(30, 30));
+shared_ptr<Collider> circle = make_shared<CircleCollider>(Vector2D(500,500), 50);
+shared_ptr<Collider> rect = make_shared<RectCollider>(Vector2D(500, 500), Vector2D(30, 30));
 shared_ptr<Line> line = make_shared<Line>(Vector2D(500, 500), Vector2D(30, 111));
-// Window Procedure : 윈도우가 진행되는 절차
-// Procedure ... 함수
-// 
-// 게임이라는 건물
-// HWND : Handle Window => 인력사무소장
-// message : 윈도우메시지... 윈도우창에서 할 일을 써놓는 곳.
-// HDC : Handle Device Context ... => 꾸미기 담당
+
+// 색
+HPEN redPen = CreatePen(3, 3, RGB(255, 0, 0));
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -184,18 +181,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-            
-            // 1. 클래스 Line, RectCollider 두개 만들기.
-            // 2. circle과 동일하게 Render함수를 이용하여 그리기.
-
-            // RectCollider
+   
             rect->Render(hdc);
         
-            // 원 그리기
             circle->Render(hdc);
 
-            // 선 그리기
-            // Line
             line->Render(hdc);
             line->_end = mousePos;
 

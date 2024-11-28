@@ -2,9 +2,9 @@
 #include "RectCollider.h"
 
 RectCollider::RectCollider(Vector2D center, Vector2D size)
-: _center(center)
-, _halfSize(size * 0.5f)
+: _halfSize(size * 0.5f)
 {
+	_center = center;
 }
 
 RectCollider::~RectCollider()
@@ -17,5 +17,7 @@ void RectCollider::Update()
 
 void RectCollider::Render(HDC hdc)
 {
+	SelectObject(hdc, _pens[_curColor]);
+
 	Rectangle(hdc, Left(), Top(), Right(), Bottom());
 }
