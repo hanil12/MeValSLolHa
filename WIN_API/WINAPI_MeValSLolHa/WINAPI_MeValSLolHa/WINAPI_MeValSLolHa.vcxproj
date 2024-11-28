@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\Collider.h" />
     <ClInclude Include="Objects\Line.h" />
     <ClInclude Include="Objects\CircleCollider.h" />
     <ClInclude Include="framework.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="WINAPI_MeValSLolHa.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Objects\Collider.cpp" />
     <ClCompile Include="Objects\Line.cpp" />
     <ClCompile Include="Objects\CircleCollider.cpp" />
     <ClCompile Include="framework.cpp">
