@@ -17,6 +17,7 @@
 #include <unordered_map>
 #include <memory>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -37,5 +38,9 @@ using Vector2D = Vector2<float>;
 #include "Objects/Collider.h"
 #include "Objects/CircleCollider.h"
 #include "Objects/RectCollider.h"
+
+#include "Scenes/Scene.h"
+
+#include "Program.h"
 
 extern Vector2D mousePos;

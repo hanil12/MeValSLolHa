@@ -123,12 +123,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //
 Vector2D mousePos;
 
-shared_ptr<Collider> circle = make_shared<CircleCollider>(Vector2D(500,500), 50);
-shared_ptr<Collider> rect = make_shared<RectCollider>(Vector2D(500, 500), Vector2D(30, 30));
-shared_ptr<Line> line = make_shared<Line>(Vector2D(500, 500), Vector2D(30, 111));
-
-// 색
-HPEN redPen = CreatePen(3, 3, RGB(255, 0, 0));
+shared_ptr<Program> program;
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -137,17 +132,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
     {
         SetTimer(hWnd, 1, 1, nullptr); // 1ms 마다 WM_TIMER메시지 Send
+        program = make_shared<Program>();
 
         break;
     }
 
     case WM_TIMER:
     {
-        rect->Update();
-        circle->Update();
-        line->Update();
-
         InvalidateRect(hWnd, nullptr, true);
+        program->Update();
 
         break;
     }
@@ -181,13 +174,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
-   
-            rect->Render(hdc);
-        
-            circle->Render(hdc);
-
-            line->Render(hdc);
-            line->_end = mousePos;
+            program->Render(hdc);
 
             EndPaint(hWnd, &ps);
         }

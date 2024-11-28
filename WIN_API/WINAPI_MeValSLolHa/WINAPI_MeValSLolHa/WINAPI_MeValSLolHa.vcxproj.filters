@@ -42,6 +42,15 @@
     <ClInclude Include="Objects\Collider.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\Scene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\PaintScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_MeValSLolHa.cpp">
@@ -63,6 +72,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Objects\Collider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\Scene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scenes\PaintScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
