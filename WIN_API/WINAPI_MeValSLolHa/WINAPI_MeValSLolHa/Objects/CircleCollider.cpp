@@ -29,9 +29,7 @@ bool CircleCollider::IsCollision(const Vector2D& pos)
 
 bool CircleCollider::IsCollision(shared_ptr<CircleCollider> other)
 {
-	// TODO
-
-	return false;
+	return (other->center - center).Length() < _radius + other->_radius;
 }
 
 bool CircleCollider::IsCollision(shared_ptr<RectCollider> other)
