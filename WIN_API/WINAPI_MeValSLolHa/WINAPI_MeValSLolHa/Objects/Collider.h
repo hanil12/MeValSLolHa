@@ -14,6 +14,9 @@ public:
 	virtual void Update() abstract;
 	virtual void Render(HDC hdc) abstract;
 
+	void SetRed() { _curColor = Color::C_RED; }
+	void SetGreen() { _curColor = Color::C_GREEN; }
+
 	Vector2D	 center;
 
 protected:

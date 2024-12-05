@@ -21,3 +21,22 @@ void CircleCollider::Render(HDC hdc)
 	int bottom = center.y + _radius;
 	Ellipse(hdc, left, top, right, bottom);
 }
+
+bool CircleCollider::IsCollision(const Vector2D& pos)
+{
+	return (pos - center).Length() < _radius;
+}
+
+bool CircleCollider::IsCollision(shared_ptr<CircleCollider> other)
+{
+	// TODO
+
+	return false;
+}
+
+bool CircleCollider::IsCollision(shared_ptr<RectCollider> other)
+{
+	// TODO
+
+	return false;
+}
