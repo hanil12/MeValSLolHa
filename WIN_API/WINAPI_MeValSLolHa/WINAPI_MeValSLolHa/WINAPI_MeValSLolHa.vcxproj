@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scenes\CollisionScene.h" />
     <ClInclude Include="Objects\Collider.h" />
     <ClInclude Include="Objects\Line.h" />
     <ClInclude Include="Objects\CircleCollider.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="WINAPI_MeValSLolHa.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scenes\CollisionScene.cpp" />
     <ClCompile Include="Objects\Collider.cpp" />
     <ClCompile Include="Objects\Line.cpp" />
     <ClCompile Include="Objects\CircleCollider.cpp" />

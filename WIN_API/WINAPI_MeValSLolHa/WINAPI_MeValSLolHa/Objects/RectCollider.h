@@ -8,10 +8,10 @@ public:
 	virtual void Update() override;
 	virtual void Render(HDC hdc) override;
 
-	int Left() { return _center.x - _halfSize.x; }
-	int Right() { return _center.x + _halfSize.x; }
-	int Top() { return _center.y - _halfSize.y; }
-	int Bottom() { return _center.y + _halfSize.y; }
+	int Left() { return center.x - _halfSize.x; }
+	int Right() { return center.x + _halfSize.x; }
+	int Top() { return center.y - _halfSize.y; }
+	int Bottom() { return center.y + _halfSize.y; }
 
 private:
 	Vector2D	 _halfSize;

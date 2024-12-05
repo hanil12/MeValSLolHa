@@ -14,8 +14,9 @@ public:
 	virtual void Update() abstract;
 	virtual void Render(HDC hdc) abstract;
 
+	Vector2D	 center;
+
 protected:
-	Vector2D	 _center;
 
 	Color _curColor = Color::C_GREEN;
 	vector<HPEN> _pens;
