@@ -17,6 +17,12 @@ public:
 	void SetRed() { _curColor = Color::C_RED; }
 	void SetGreen() { _curColor = Color::C_GREEN; }
 
+	bool IsCollision(shared_ptr<Collider> other);
+
+	virtual bool IsCollision(const Vector2D& pos) abstract;
+	virtual bool IsCollision(shared_ptr<class CircleCollider> other) abstract;
+	virtual bool IsCollision(shared_ptr<class RectCollider> other) abstract;
+
 	Vector2D	 center;
 
 protected:

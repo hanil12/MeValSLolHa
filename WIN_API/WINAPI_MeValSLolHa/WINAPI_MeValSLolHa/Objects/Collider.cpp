@@ -14,3 +14,11 @@ Collider::~Collider()
 		DeleteObject(pen);
 	}
 }
+
+bool Collider::IsCollision(shared_ptr<Collider> other)
+{
+	// TODO
+	// 알고보니까 other == rect?
+
+	return false;
+}
