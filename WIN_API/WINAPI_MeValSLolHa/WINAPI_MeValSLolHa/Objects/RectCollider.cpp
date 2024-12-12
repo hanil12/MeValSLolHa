@@ -5,6 +5,7 @@ RectCollider::RectCollider(Vector2D center, Vector2D size)
 : _halfSize(size * 0.5f)
 {
 	this->center = center;
+	_type = Collider::RECT;
 }
 
 RectCollider::~RectCollider()

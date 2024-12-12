@@ -5,6 +5,7 @@ CircleCollider::CircleCollider(Vector2D center, float radius)
 : _radius(radius)
 {
 	this->center = center;
+	_type = Collider::CIRCLE;
 }
 
 void CircleCollider::Update()

@@ -17,8 +17,23 @@ Collider::~Collider()
 
 bool Collider::IsCollision(shared_ptr<Collider> other)
 {
-	// TODO
-	// 알고보니까 other == rect?
+	switch (_type)
+	{
+	case Collider::NONE:
+		break;
+	case Collider::CIRCLE:
+	{
+		auto circle = dynamic_pointer_cast<CircleCollider>(other);
+		return IsCollision(circle);
+	}
+	case Collider::RECT:
+	{
+		auto rect = dynamic_pointer_cast<RectCollider>(other);
+		return IsCollision(rect);
+	}
+	default:
+		break;
+	}
 
 	return false;
 }
