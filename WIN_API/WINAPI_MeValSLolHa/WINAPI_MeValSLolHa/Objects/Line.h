@@ -2,6 +2,12 @@
 class Line
 {
 public:
+	struct HitResult
+	{
+		bool isCollision = false;
+		Vector2D point;
+	};
+
 	enum Color
 	{
 		C_GREEN = 0,
@@ -16,6 +22,8 @@ public:
 
 	void SetRed() { _curColor = Color::C_RED; }
 	void SetGreen() { _curColor = Color::C_GREEN; }
+
+	HitResult IsCollision(shared_ptr<Line> other);
 
 public:
 	Vector2D _start;

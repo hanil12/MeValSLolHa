@@ -26,7 +26,8 @@ using namespace std;
 
 using Vector2D = Vector2<float>;
 
-#define LERP(start, end, ratio) (end - start) * ratio
+// 선형보간
+#define LERP(start, end, ratio)  start + (end - start) * ratio
 
 #define BLACK		 RGB(0,0,0)
 #define WHITE		 RGB(255,255,255)
