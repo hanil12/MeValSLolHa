@@ -60,3 +60,11 @@ void Cannon::RotateBarrel()
 
 	_barrel->SetDir(Vector2D(cosf(_angle), -sinf(_angle)));
 }
+
+void Cannon::Fire()
+{
+	if (GetAsyncKeyState(VK_SPACE) & 0x8001)
+	{
+		// 
+	}
+}

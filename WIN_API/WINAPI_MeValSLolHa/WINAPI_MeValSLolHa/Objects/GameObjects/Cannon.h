@@ -12,6 +12,7 @@ public:
 
 	void Move();
 	void RotateBarrel();
+	void Fire();
 
 	void SetPos(Vector2D pos) { _body->center = pos; }
 
