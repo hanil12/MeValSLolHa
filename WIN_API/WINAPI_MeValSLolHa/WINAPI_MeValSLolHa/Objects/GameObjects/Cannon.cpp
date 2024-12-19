@@ -1,10 +1,13 @@
 #include "framework.h"
 #include "Cannon.h"
 
+#include "Barrel.h"
+
 Cannon::Cannon()
 {
+	// 60 , 35
 	_body = make_shared<RectCollider>(Vector2D(), Vector2D(120, 70));
-	_barrel = make_shared<Line>(Vector2D(), Vector2D());
+	_barrel = make_shared<Barrel>(150);
 }
 
 Cannon::~Cannon()
@@ -14,6 +17,7 @@ Cannon::~Cannon()
 void Cannon::Update()
 {
 	Move();
+	RotateBarrel();
 
 	_body->Update();
 	_barrel->Update();
@@ -38,4 +42,21 @@ void Cannon::Move()
 		Vector2D right = Vector2D(1, 0);
 		AddPos(right * _speed);
 	}
+
+	_barrel->UpdateBody(_body->center);
+}
+
+void Cannon::RotateBarrel()
+{
+	if (GetAsyncKeyState('W') & 0x8001)
+	{
+		_angle += 0.07f;
+	}
+
+	if (GetAsyncKeyState('S') & 0x8001)
+	{
+		_angle -= 0.07f;
+	}
+
+	_barrel->SetDir(Vector2D(cosf(_angle), -sinf(_angle)));
 }
