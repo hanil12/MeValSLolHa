@@ -129,7 +129,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
     case WM_CREATE:
     {
-        SetTimer(hWnd, 1, 1, nullptr); // 1ms 마다 WM_TIMER메시지 Send
+        SetTimer(hWnd, 1, 10, nullptr); // 1ms 마다 WM_TIMER메시지 Send
         program = make_shared<Program>();
 
         break;

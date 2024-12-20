@@ -12,7 +12,7 @@ public:
 	void SetDir(Vector2D dir) { _dir = dir; }
 	Vector2D GetDir() { return _dir; }
 	Vector2D GetMuzzle() { return _line->_end; }
-	//float BarrelLength() { return }
+	float BarrelLength() { return _barrelLength; }
 
 private:
 	shared_ptr<Line> _line;
