@@ -72,6 +72,12 @@ public:
 
 		return result;
 	}
+	void Normalize()
+	{
+		float length = Length();
+		x /= length;
+		y /= length;
+	}
 
 	T x;
 	T y;

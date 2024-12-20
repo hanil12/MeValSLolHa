@@ -2,12 +2,14 @@
 #include "Cannon.h"
 
 #include "Barrel.h"
+#include "Ball.h"
 
 Cannon::Cannon()
 {
 	// 60 , 35
 	_body = make_shared<RectCollider>(Vector2D(), Vector2D(120, 70));
 	_barrel = make_shared<Barrel>(150);
+	_ball = make_shared<Ball>();
 }
 
 Cannon::~Cannon()
@@ -18,15 +20,18 @@ void Cannon::Update()
 {
 	Move();
 	RotateBarrel();
+	Fire();
 
 	_body->Update();
 	_barrel->Update();
+	_ball->Update();
 }
 
 void Cannon::Render(HDC hdc)
 {
 	_barrel->Render(hdc);
 	_body->Render(hdc);
+	_ball->Render(hdc);
 }
 
 void Cannon::Move()
@@ -65,6 +70,8 @@ void Cannon::Fire()
 {
 	if (GetAsyncKeyState(VK_SPACE) & 0x8001)
 	{
-		// 
+		_ball->SetPos(_barrel->GetMuzzle());
+		_ball->SetDir(_barrel->GetDir());
+		// _ball->SetSpeed(_barrel)
 	}
 }

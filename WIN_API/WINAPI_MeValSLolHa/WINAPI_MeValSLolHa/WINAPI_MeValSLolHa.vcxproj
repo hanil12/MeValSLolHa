@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\GameObjects\Ball.h" />
     <ClInclude Include="Objects\GameObjects\Barrel.h" />
     <ClInclude Include="Objects\GameObjects\Cannon.h" />
     <ClInclude Include="Scenes\CannonScene.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="WINAPI_MeValSLolHa.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Objects\GameObjects\Ball.cpp" />
     <ClCompile Include="Objects\GameObjects\Barrel.cpp" />
     <ClCompile Include="Objects\GameObjects\Cannon.cpp" />
     <ClCompile Include="Scenes\CannonScene.cpp" />

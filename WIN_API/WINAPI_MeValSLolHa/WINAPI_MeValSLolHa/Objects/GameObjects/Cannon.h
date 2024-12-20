@@ -24,5 +24,6 @@ private:
 	float _angle = 0.0f;
 
 	shared_ptr<class Barrel> _barrel;
+	shared_ptr<class Ball> _ball;
 };
 

@@ -66,6 +66,9 @@
     <ClInclude Include="Objects\GameObjects\Barrel.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Objects\GameObjects\Ball.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_MeValSLolHa.cpp">
@@ -111,6 +114,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Objects\GameObjects\Barrel.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\GameObjects\Ball.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
