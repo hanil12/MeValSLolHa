@@ -24,6 +24,6 @@ private:
 
 	bool _isActive = false;
 	float _fallingSpeed = 0.0f;
-	const float _G = 1;
+	const float _G = 0.7;
 };
 

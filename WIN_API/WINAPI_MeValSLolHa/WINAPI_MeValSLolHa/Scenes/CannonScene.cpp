@@ -14,8 +14,10 @@ CannonScene::CannonScene()
 
 	_cannon->Update();
 	_cannon->RotateBarrel();
+	_cannon->Move();
 	_cannon2->Update();
 	_cannon2->RotateBarrel();
+	_cannon2->Move();
 }
 
 CannonScene::~CannonScene()
@@ -39,6 +41,12 @@ void CannonScene::Update()
 
 	_cannon->Update();
 	_cannon2->Update();
+
+	// cannon狼 balls客 cannon2狼 面倒贸府
+	for (auto ball : _cannon->GetBalls())
+	{
+		_cannon2->IsCollision_Ball(ball);
+	}
 }
 
 void CannonScene::Render(HDC hdc)

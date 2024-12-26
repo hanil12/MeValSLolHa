@@ -18,6 +18,8 @@ public:
 	void SetPos(Vector2D pos) { _body->center = pos; }
 	void AddPos(Vector2D vec) { _body->center += vec;  }
 
+	vector<shared_ptr<Ball>> GetBalls() { return _balls; }
+
 	bool IsCollision_Ball(shared_ptr<Ball> ball);
 	void TakeDamage(int amount);
 

@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GMacro.h" />
     <ClInclude Include="Objects\GameObjects\Ball.h" />
     <ClInclude Include="Objects\GameObjects\Barrel.h" />
     <ClInclude Include="Objects\GameObjects\Cannon.h" />

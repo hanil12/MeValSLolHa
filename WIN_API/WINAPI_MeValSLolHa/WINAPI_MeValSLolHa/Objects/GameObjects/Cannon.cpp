@@ -24,6 +24,8 @@ Cannon::~Cannon()
 
 void Cannon::Update()
 {
+	if (isActive == false) return;
+
 	_body->Update();
 	_barrel->Update();
 
@@ -35,6 +37,8 @@ void Cannon::Update()
 
 void Cannon::Render(HDC hdc)
 {
+	if (isActive == false) return;
+
 	_barrel->Render(hdc);
 	_body->Render(hdc);
 
@@ -106,6 +110,12 @@ void Cannon::Fire(bool& turn)
 
 bool Cannon::IsCollision_Ball(shared_ptr<Ball> ball)
 {
+	if (ball->IsActive() == false)
+		return false;
+
+	if (isActive == false)
+		return false;
+
 	if (_body->Collider::IsCollision(ball->GetCollider()))
 	{
 		// TODO : 공의 데미지..?
