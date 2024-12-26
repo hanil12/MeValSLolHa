@@ -12,6 +12,9 @@ public:
 
 private:
 	shared_ptr<Cannon> _cannon;
+	shared_ptr<Cannon> _cannon2;
+
+	bool _turn = true;
 
 	// 1. 다른 캐논 1개 놓고
 	// 2. 공을 발사해서 캐논이 맞으면 사라지게

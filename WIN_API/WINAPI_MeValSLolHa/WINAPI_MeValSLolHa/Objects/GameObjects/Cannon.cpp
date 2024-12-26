@@ -24,10 +24,6 @@ Cannon::~Cannon()
 
 void Cannon::Update()
 {
-	Move();
-	RotateBarrel();
-	Fire();
-
 	_body->Update();
 	_barrel->Update();
 
@@ -35,8 +31,6 @@ void Cannon::Update()
 	{
 		ball->Update();
 	}
-
-	_timer += 0.05f;
 }
 
 void Cannon::Render(HDC hdc)
@@ -82,8 +76,10 @@ void Cannon::RotateBarrel()
 	_barrel->SetDir(Vector2D(cosf(_angle), -sinf(_angle)));
 }
 
-void Cannon::Fire()
+void Cannon::Fire(bool& turn)
 {
+	_timer += 0.05f;
+
 	if (_timer < _delay) return;
 
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
@@ -104,5 +100,31 @@ void Cannon::Fire()
 		ball->SetDir(_barrel->GetDir());
 		ball->SetSpeed(25.0f);
 		ball->SetActive(true);
+		turn = !turn;
+	}
+}
+
+bool Cannon::IsCollision_Ball(shared_ptr<Ball> ball)
+{
+	if (_body->Collider::IsCollision(ball->GetCollider()))
+	{
+		// TODO : 공의 데미지..?
+		TakeDamage(1);
+		ball->SetActive(false);
+
+		return true;
+	}
+
+	return false;
+}
+
+void Cannon::TakeDamage(int amount)
+{
+	_hp -= amount;
+
+	if (_hp <= 0)
+	{
+		isActive = false;
+		_hp = 0;
 	}
 }

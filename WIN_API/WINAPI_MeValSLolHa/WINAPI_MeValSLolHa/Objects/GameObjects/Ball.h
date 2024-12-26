@@ -15,6 +15,8 @@ public:
 	void SetActive(bool value) { _fallingSpeed = 0.0f; _isActive = value; }
 	bool IsActive() { return _isActive; }
 
+	shared_ptr<Collider> GetCollider() { return _circleCollider; }
+
 private:
 	shared_ptr<CircleCollider> _circleCollider;
 	Vector2D _dir = Vector2D(1,0);
