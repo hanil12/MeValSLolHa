@@ -147,6 +147,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\GameObjects\Arkanoid\Map.h" />
+    <ClInclude Include="Objects\GameObjects\Arkanoid\Block.h" />
+    <ClInclude Include="Scenes\ArkanoidScene.h" />
     <ClInclude Include="GMacro.h" />
     <ClInclude Include="Objects\GameObjects\Ball.h" />
     <ClInclude Include="Objects\GameObjects\Barrel.h" />
@@ -168,6 +171,9 @@
     <ClInclude Include="WINAPI_MeValSLolHa.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Objects\GameObjects\Arkanoid\Map.cpp" />
+    <ClCompile Include="Objects\GameObjects\Arkanoid\Block.cpp" />
+    <ClCompile Include="Scenes\ArkanoidScene.cpp" />
     <ClCompile Include="Objects\GameObjects\Ball.cpp" />
     <ClCompile Include="Objects\GameObjects\Barrel.cpp" />
     <ClCompile Include="Objects\GameObjects\Cannon.cpp" />

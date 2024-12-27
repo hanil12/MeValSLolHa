@@ -5,6 +5,7 @@
 #include "Scenes/CollisionScene.h"
 #include "Scenes/LineScene.h"
 #include "Scenes/CannonScene.h"
+#include "Scenes/ArkanoidScene.h"
 
 Program::Program()
 {
@@ -12,8 +13,9 @@ Program::Program()
 	_sceneTable["CollisionScene"] = make_shared<CollisionScene>();
 	_sceneTable["LineScene"] = make_shared<LineScene>();
 	_sceneTable["CannonScene"] = make_shared<CannonScene>();
+	_sceneTable["ArkanoidScene"] = make_shared<ArkanoidScene>();
 
-	_curScene = "CannonScene";
+	_curScene = "ArkanoidScene";
 }
 
 Program::~Program()
