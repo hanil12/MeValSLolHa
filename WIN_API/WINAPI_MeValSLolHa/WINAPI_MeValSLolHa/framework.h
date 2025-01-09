@@ -39,3 +39,4 @@ using Vector2D = Vector2<float>;
 #include "Program.h"
 
 extern Vector2D mousePos;
+extern HWND hWnd;

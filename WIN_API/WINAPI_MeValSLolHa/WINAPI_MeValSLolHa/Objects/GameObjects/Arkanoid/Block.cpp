@@ -12,10 +12,14 @@ Block::~Block()
 
 void Block::Update()
 {
+	if (!isActive) return;
+
 	_rect->Update();
 }
 
 void Block::Render(HDC hdc)
 {
+	if (!isActive) return;
+
 	_rect->Render(hdc);
 }

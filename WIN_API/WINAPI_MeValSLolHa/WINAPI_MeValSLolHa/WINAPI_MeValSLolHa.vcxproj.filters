@@ -81,6 +81,12 @@
     <ClInclude Include="Objects\GameObjects\Arkanoid\Map.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Objects\GameObjects\Arkanoid\Bar.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\GameObjects\Arkanoid\ArkanoidBall.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WINAPI_MeValSLolHa.cpp">
@@ -138,6 +144,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Objects\GameObjects\Arkanoid\Map.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\GameObjects\Arkanoid\Bar.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\GameObjects\Arkanoid\ArkanoidBall.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

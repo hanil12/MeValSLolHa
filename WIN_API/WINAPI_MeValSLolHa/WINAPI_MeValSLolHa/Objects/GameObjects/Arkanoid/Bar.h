@@ -1,19 +1,21 @@
 #pragma once
-class Block
+class Bar
 {
 public:
-	Block(Vector2D halfSize);
-	~Block();
+	Bar();
+	~Bar();
 
 	void Update();
 	void Render(HDC hdc);
 
-	void SetPos(Vector2D pos) { _rect->center = pos; }
+	void MoveInput();
+	void Fire(shared_ptr<class ArkanoidBall> ball);
 
+	Vector2D GetCenter() { return _rect->center; }
 	shared_ptr<RectCollider> GetCollider() { return _rect; }
-	
-	bool isActive = true;
+
 private:
 	shared_ptr<RectCollider> _rect;
+	float _speed;
 };
 
