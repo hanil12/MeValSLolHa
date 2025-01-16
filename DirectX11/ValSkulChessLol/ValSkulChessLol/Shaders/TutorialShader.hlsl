@@ -1,11 +1,31 @@
-float4 VS(float4 pos : POSITION) : SV_POSITION
+Texture2D map : register(t0);
+SamplerState samp : register(s0);
+
+struct VertexInput
 {
-    return pos;
+    float4 pos : POSITION;
+    float2 uv : UV;
+};
+
+struct PixelInput
+{
+    float4 pos : SV_POSITION;
+    float2 uv : UV;
+};
+
+PixelInput VS(VertexInput input)
+{
+    PixelInput result;
+    result.pos = input.pos;
+    result.uv = input.uv;
+    
+    return result;
 }
 
 // SV : System Value
 // TARGET : 그릴 곳
-float4 PS() : SV_TARGET
+// 픽셀마다 함수실행
+float4 PS(PixelInput input) : SV_TARGET
 {
-    return float4(1.0f, 1.0f, 1.0f, 1.0f);
+    return map.Sample(samp, input.uv);
 }
