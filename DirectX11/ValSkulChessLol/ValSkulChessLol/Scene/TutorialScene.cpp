@@ -9,6 +9,8 @@ TutorialScene::TutorialScene()
 
     _srv = make_shared<SRV>(L"Resource/SIUUUU.jpg");
     _samplerState = make_shared<SamplerState>();
+
+    // TEST : °æ¼·,Áö¹Î
 }
 
 TutorialScene::~TutorialScene()
