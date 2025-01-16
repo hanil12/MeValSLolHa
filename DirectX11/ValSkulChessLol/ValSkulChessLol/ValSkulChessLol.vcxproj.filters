@@ -44,6 +44,9 @@
     <Image Include="ValSkulChessLol.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Resource\SIUUUU.jpg">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\TutorialShader.hlsl" />

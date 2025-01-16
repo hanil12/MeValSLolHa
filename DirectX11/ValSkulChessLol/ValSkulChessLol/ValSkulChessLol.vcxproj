@@ -169,6 +169,7 @@
     <ResourceCompile Include="ValSkulChessLol.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resource\SIUUUU.jpg" />
     <Image Include="small.ico" />
     <Image Include="ValSkulChessLol.ico" />
   </ItemGroup>

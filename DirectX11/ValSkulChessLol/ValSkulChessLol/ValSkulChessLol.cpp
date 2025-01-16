@@ -72,6 +72,11 @@ Microsoft::WRL::ComPtr<ID3D11VertexShader> vertexShader;
 // 4. pixelShader
 Microsoft::WRL::ComPtr<ID3D11PixelShader> pixelShader;
 
+// TextureMapping
+// 1. Texture(source, 포켓몬)
+// 2. ShaderResourceView(판박이를 만드는 아저씨)
+// 3. SamplerState(판박이를 붙히는 아저씨)
+
 struct Vertex
 {
     XMFLOAT3 pos;
@@ -351,14 +356,18 @@ void InitDevice()
 
     Vertex vertices[] =
     {
-        XMFLOAT3(0.5f, 0.5f, 0.0f), //  중앙 위
-        XMFLOAT3(0.5f, -0.5f, 0.0f), // 좌측 아래
-        XMFLOAT3(-0.5f, -0.5f, 0.0f) // 우측 아래
+        XMFLOAT3(-0.5f, 0.5f, 0.0f), //  좌측 상단
+        XMFLOAT3(0.5f, -0.5f, 0.0f), // 우측 하단
+        XMFLOAT3(-0.5f, -0.5f, 0.0f), // 좌측 하단
+
+        XMFLOAT3(-0.5f + 0.1f, 0.5f, 0.0f), // 좌측 상단
+        XMFLOAT3(0.5f + 0.1f, 0.5f, 0.0f), // 우측 상단
+        XMFLOAT3(0.5f + 0.1f, -0.5f, 0.0f), // 우측 하단
     };
 
     D3D11_BUFFER_DESC bd = {};
     bd.Usage = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof(Vertex) * 3;
+    bd.ByteWidth = sizeof(Vertex) * 6;
     bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 
     D3D11_SUBRESOURCE_DATA initData = {};
@@ -389,7 +398,7 @@ void Render()
     deviceContext->VSSetShader(vertexShader.Get(), nullptr, 0);
     deviceContext->PSSetShader(pixelShader.Get(), nullptr, 0);
 
-    deviceContext->Draw(3, 0);
+    deviceContext->Draw(6, 0);
 
     swapChain->Present(0, 0);
 }
