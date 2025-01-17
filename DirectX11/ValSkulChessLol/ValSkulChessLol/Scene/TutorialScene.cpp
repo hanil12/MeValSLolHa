@@ -3,7 +3,13 @@
 
 TutorialScene::TutorialScene()
 {
-	_quad = make_shared<Quad>(L"Resource/SIUUUU.jpg");
+	_quad1 = make_shared<Quad>(L"Resource/SIUUUU.jpg");
+	_quad2 = make_shared<Quad>(L"Resource/MeGod.jpg");
+
+	// Çà·Ä, WVP (SRT)
+	// - Çà·Ä µ¡¼À
+	// - Çà·Ä °ö¼À
+	// - Çà·ÄÀÇ Á¾·ù
 }
 
 TutorialScene::~TutorialScene()
@@ -12,11 +18,12 @@ TutorialScene::~TutorialScene()
 
 void TutorialScene::Update()
 {
-	_quad->Update();
+	_quad1->Update();
+	_quad2->Update();
 }
 
 void TutorialScene::Render()
 {
-	_quad->Render();
-	// _quad2->Render();
+	_quad1->Render();
+	_quad2->Render();
 }
