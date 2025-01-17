@@ -33,6 +33,7 @@
     <ClInclude Include="Program\Program.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\TutorialScene.h" />
+    <ClInclude Include="Objects\Bagic\Quad.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -69,6 +70,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\TutorialScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Bagic\Quad.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

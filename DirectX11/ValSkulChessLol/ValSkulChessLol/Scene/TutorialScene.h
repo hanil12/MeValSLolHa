@@ -10,15 +10,9 @@ public:
 	void Render() override;
 
 private:
-	// 정점 정보들
-	shared_ptr<VertexBuffer> _vertexBuffer;
-	// GPU가 수행할 연산을 적어놓은 곳
-	shared_ptr<VertexShader> _vs;
-	shared_ptr<PixelShader> _ps;
+	shared_ptr<Quad> _quad;
 
-	// 판박이 만드는 아저씨
-	shared_ptr<SRV> _srv;
-	// 판박이 붙히는 아저씨
-	shared_ptr<SamplerState> _samplerState;
+	// 1. Quad 하나 추가하고 다른 이미지로
+	// 2. World View Projection 가 무엇인지 조사하기
 };
 

@@ -56,6 +56,9 @@ using namespace DirectX;
 #include "Core/Texture/SRV.h"
 #include "Core/Texture/SamplerState.h"
 
+// OBJECTS - bagic
+#include "Objects/Bagic/Quad.h"
+
 // SCENE
 #include "Scene/Scene.h"
 
