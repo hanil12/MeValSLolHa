@@ -147,7 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Buffers\ConstantBuffer.h" />
+    <ClInclude Include="Core\Buffers\BufferLayout.h" />
     <ClInclude Include="Core\Device\Device.h" />
+    <ClInclude Include="Core\Math\Vector.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Core\Render\PixelShader.h" />
     <ClInclude Include="Program\Program.h" />
@@ -158,12 +161,14 @@
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Scene\TutorialScene.h" />
+    <ClInclude Include="Core\Math\Transform.h" />
     <ClInclude Include="ValSkulChessLol.h" />
     <ClInclude Include="Core\Render\VertexBuffer.h" />
     <ClInclude Include="Core\Render\VertexLayout.h" />
     <ClInclude Include="Core\Render\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Core\Buffers\ConstantBuffer.cpp" />
     <ClCompile Include="Core\Device\Device.cpp" />
     <ClCompile Include="framework.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -182,6 +187,7 @@
     <ClCompile Include="Objects\Bagic\Quad.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\TutorialScene.cpp" />
+    <ClCompile Include="Core\Math\Transform.cpp" />
     <ClCompile Include="ValSkulChessLol.cpp" />
     <ClCompile Include="Core\Render\VertexBuffer.cpp" />
     <ClCompile Include="Core\Render\VertexLayout.cpp" />

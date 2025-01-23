@@ -6,6 +6,15 @@
 Program::Program()
 {
     _scene = make_shared<TutorialScene>();
+
+    _view = make_shared<MatrixBuffer>();
+    _projection = make_shared<MatrixBuffer>();
+
+    XMMATRIX projectionM = XMMatrixOrthographicOffCenterLH(0, WIN_WIDTH, 0, WIN_HEIGHT, 0, 1.0f);
+    _projection->SetData(projectionM);
+
+    _view->Update();
+    _projection->Update();
 }
 
 Program::~Program()
@@ -31,6 +40,9 @@ void Program::Render()
     DC->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
     // 快府啊 弊副 葛电 巴
+    _view->SetVS(1);
+    _projection->SetVS(2);
+
     _scene->Render();
 
     Device::Instance()->GetSwapChain()->Present(0, 0);

@@ -12,6 +12,8 @@ public:
 	void CreateMaterial(wstring textureFile);
 	void CreateMesh();
 
+	shared_ptr<Transform> GetTransform() { return _transform; }
+
 private:
 	// mesh
 	vector<Vertex_Texture> _vertices;
@@ -24,5 +26,7 @@ private:
 	// material : Texture
 	shared_ptr<SRV> _srv;
 	shared_ptr<SamplerState> _samplerState;
+
+	shared_ptr<Transform> _transform;
 };
 

@@ -46,6 +46,10 @@ using namespace DirectX;
 // CORE
 #include "Core/Device/Device.h"
 
+// MATH
+#include "Core/Math/Vector.h"
+#include "Core/Math/Transform.h"
+
 // RENDER
 #include "Core/Render/VertexLayout.h"
 #include "Core/Render/VertexBuffer.h"
@@ -55,6 +59,10 @@ using namespace DirectX;
 // TEXTURE
 #include "Core/Texture/SRV.h"
 #include "Core/Texture/SamplerState.h"
+
+// BUFFER
+#include "Core/Buffers/ConstantBuffer.h"
+#include "Core/Buffers/BufferLayout.h"
 
 // OBJECTS - bagic
 #include "Objects/Bagic/Quad.h"
@@ -69,5 +77,9 @@ using namespace DirectX;
 // MACRO
 #define DEVICE	Device::Instance()->GetDevice()
 #define DC		Device::Instance()->GetDC()
+
+#define WIN_WIDTH		1200
+#define WIN_HEIGHT		720
+#define CENTER			Vector(WIN_WIDTH * 0.5f, WIN_HEIGHT * 0.5f)
 
 extern HWND hWnd;

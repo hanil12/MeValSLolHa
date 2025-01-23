@@ -34,6 +34,10 @@
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\TutorialScene.h" />
     <ClInclude Include="Objects\Bagic\Quad.h" />
+    <ClInclude Include="Core\Buffers\ConstantBuffer.h" />
+    <ClInclude Include="Core\Buffers\BufferLayout.h" />
+    <ClInclude Include="Core\Math\Vector.h" />
+    <ClInclude Include="Core\Math\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -73,6 +77,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Objects\Bagic\Quad.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Buffers\ConstantBuffer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Math\Transform.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
