@@ -6,10 +6,13 @@ SolarSystemScene::SolarSystemScene()
 	_sun = make_shared<Quad>(L"Resource/sun.png");
 	_sun->GetTransform()->SetPos(CENTER);
 
+	// Sun°ú À§Ä¡¸¸ °°°í ±øÅë Æ®·£½ºÆû
+	_sunTrans = make_shared<Transform>();
+
 	_earth = make_shared<Quad>(L"Resource/earth.png");
 	_earth->GetTransform()->AddPos(Vector(200, 0));
 	_earth->GetTransform()->SetScale(Vector(0.5f, 0.5f));
-	_earth->GetTransform()->SetParent(_sun->GetTransform());
+	_earth->GetTransform()->SetParent(_sunTrans);
 	
 	_moon = make_shared<Quad>(L"Resource/moon.png");
 	_moon->GetTransform()->AddPos(Vector(200, 0));
@@ -35,8 +38,14 @@ void SolarSystemScene::Update()
 	_sun->Update();
 	_earth->Update();
 	_moon->Update();
+	_sunTrans->Update();
+
+	// ±øÅë Æ®·£½ºÆû
+	_sunTrans->SetPos(_sun->GetTransform()->GetPos());
 
 	_sun->GetTransform()->AddAngle(0.0001f);
+	_sunTrans->AddAngle(0.00005f);
+	_earth->GetTransform()->AddAngle(0.0001f);
 }
 
 void SolarSystemScene::Render()
