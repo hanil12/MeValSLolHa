@@ -159,6 +159,7 @@
     <ClInclude Include="Core\Texture\SamplerState.h" />
     <ClInclude Include="Core\Texture\SRV.h" />
     <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SolarSystemScene.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Scene\TutorialScene.h" />
     <ClInclude Include="Core\Math\Transform.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\TutorialScene.cpp" />
     <ClCompile Include="Core\Math\Transform.cpp" />
+    <ClCompile Include="Scene\SolarSystemScene.cpp" />
     <ClCompile Include="ValSkulChessLol.cpp" />
     <ClCompile Include="Core\Render\VertexBuffer.cpp" />
     <ClCompile Include="Core\Render\VertexLayout.cpp" />
@@ -197,7 +199,10 @@
     <ResourceCompile Include="ValSkulChessLol.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resource\earth.png" />
+    <Image Include="Resource\moon.png" />
     <Image Include="Resource\SIUUUU.jpg" />
+    <Image Include="Resource\sun.png" />
     <Image Include="small.ico" />
     <Image Include="ValSkulChessLol.ico" />
   </ItemGroup>

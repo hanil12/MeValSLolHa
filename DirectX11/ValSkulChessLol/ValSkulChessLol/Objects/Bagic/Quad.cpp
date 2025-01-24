@@ -47,13 +47,13 @@ void Quad::CreateMesh()
 {
 	_vertices =
     {
-        { XMFLOAT3(-300.0f, 300.0f, 0.0f), XMFLOAT2(0,0) }, //  좌측 상단
-        { XMFLOAT3(300.0f, -300.0f, 0.0f), XMFLOAT2(1,1) }, // 우측 하단
-        { XMFLOAT3(-300.0f, -300.0f, 0.0f), XMFLOAT2(0,1)}, // 좌측 하단
+        { XMFLOAT3(-100, 100, 0.0f), XMFLOAT2(0,0) }, //  좌측 상단
+        { XMFLOAT3(100, -100, 0.0f), XMFLOAT2(1,1) }, // 우측 하단
+        { XMFLOAT3(-100, -100, 0.0f), XMFLOAT2(0,1)}, // 좌측 하단
 
-        { XMFLOAT3(-300.0f, 300.0f, 0.0f), XMFLOAT2(0,0)}, // 좌측 상단
-        { XMFLOAT3(300.0f, 300.0f, 0.0f), XMFLOAT2(1,0)}, // 우측 상단
-        { XMFLOAT3(300.0f, -300.0f, 0.0f), XMFLOAT2(1,1)} // 우측 하단
+        { XMFLOAT3(-100, 100, 0.0f), XMFLOAT2(0,0)}, // 좌측 상단
+        { XMFLOAT3(100, 100, 0.0f), XMFLOAT2(1,0)}, // 우측 상단
+        { XMFLOAT3(100, -100, 0.0f), XMFLOAT2(1,1)} // 우측 하단
     };
 
     _vertexBuffer = make_shared<VertexBuffer>(_vertices.data(), sizeof(Vertex_Texture), _vertices.size(), 0);

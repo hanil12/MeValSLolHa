@@ -4,6 +4,7 @@
 Transform::Transform()
 {
 	_world = make_shared<MatrixBuffer>();
+    _srtMatrix = XMMatrixIdentity();
 }
 
 Transform::~Transform()
@@ -12,13 +13,19 @@ Transform::~Transform()
 
 void Transform::Update()
 {
-    XMMATRIX srtMatrix = XMMatrixIdentity();
     XMMATRIX scaleM = XMMatrixScaling(_scale.x, _scale.y, 1);
     XMMATRIX rotatateM = XMMatrixRotationZ(_angle);
     XMMATRIX translateM = XMMatrixTranslation(_pos.x, _pos.y, 0);
-    srtMatrix = scaleM * rotatateM * translateM;
+    _srtMatrix = scaleM * rotatateM * translateM;
 
-    _world->SetData(srtMatrix);
+    if (_parent.expired() == false)
+    {
+        // 부모가 설정되어있다면 부모의 행렬 뒤에 곱해준다.
+        // => 부모의 좌표계로 이동된다.
+        _srtMatrix *= _parent.lock()->GetMatrix();
+    }
+
+    _world->SetData(_srtMatrix);
 
     _world->Update();
 }

@@ -38,6 +38,7 @@
     <ClInclude Include="Core\Buffers\BufferLayout.h" />
     <ClInclude Include="Core\Math\Vector.h" />
     <ClInclude Include="Core\Math\Transform.h" />
+    <ClInclude Include="Scene\SolarSystemScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -85,6 +86,9 @@
     <ClCompile Include="Core\Math\Transform.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\SolarSystemScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ValSkulChessLol.rc">
@@ -99,6 +103,15 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\SIUUUU.jpg">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\earth.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\moon.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\sun.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

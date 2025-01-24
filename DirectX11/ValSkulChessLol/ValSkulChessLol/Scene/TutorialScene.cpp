@@ -10,6 +10,8 @@ TutorialScene::TutorialScene()
 	// SRT : 좌표이동 == 좌표계변환 
 	// (Local Space) x (World) x (View) x (Projection) => VS : 각 정점에 대한 계산을 수행
 
+	// SolarSystem
+
 	_quad1->GetTransform()->SetPos(CENTER);
 	_quad1->GetTransform()->SetScale(Vector(0.5f, 0.5f));
 	_quad2->GetTransform()->SetScale(Vector(0.5f, 0.5f));

@@ -71,6 +71,7 @@ int main()
 	Player p;
 
 	p.SetPetFunc(&Pet::Attack);
+	p.SetPetFunc(&Pet::Attack10000);
 	p.Attack(&pet);
 
 	// 변심 => 나중에 다른 함수로 바꿀수도 있다.

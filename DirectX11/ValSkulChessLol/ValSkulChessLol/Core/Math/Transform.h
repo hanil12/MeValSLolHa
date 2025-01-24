@@ -21,6 +21,9 @@ public:
 	void AddPos(Vector pos) { _pos = _pos + pos; }
 	void AddAngle(float value) { _angle += value; }
 
+	void SetParent(shared_ptr<Transform> parent) { _parent = parent; }
+	XMMATRIX GetMatrix() { return _srtMatrix;  }
+
 private:
 	// Quad : 배우
 	// => vertices => 분장
@@ -32,7 +35,10 @@ private:
 	Vector _pos;
 	Vector _scale = { 1,1 };
 	float _angle = 0.0f; // Z축 회전
+	XMMATRIX _srtMatrix;
 
 	shared_ptr<MatrixBuffer> _world;
+	
+	weak_ptr<Transform> _parent;
 };
 
