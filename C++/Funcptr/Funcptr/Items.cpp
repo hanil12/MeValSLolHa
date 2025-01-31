@@ -98,7 +98,8 @@ struct Functor_Tier
 	int targetTier;
 };
 
-Item* FindItem_Functor(Item arr[], int size, Functor_Price functor)
+template<typename T>
+Item* FindItem_Functor(Item arr[], int size, T functor)
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -111,18 +112,6 @@ Item* FindItem_Functor(Item arr[], int size, Functor_Price functor)
 	return nullptr;
 }
 
-Item* FindItem_Functor(Item arr[], int size, Functor_Tier functor)
-{
-	for (int i = 0; i < size; i++)
-	{
-		if (functor(&arr[i]))
-		{
-			return &arr[i];
-		}
-	}
-
-	return nullptr;
-}
 
 // Template
 
@@ -157,17 +146,16 @@ int main()
 	// Price 12000
 	Functor_Price functor;
 	functor.targetPrice = 12000;
-	FindItem_Functor(items, 10, functor)->PrintItem();
+	FindItem_Functor<Functor_Price>(items, 10, functor)->PrintItem();
 
 	// Price 10000
 	functor.targetPrice = 10000;
-	FindItem_Functor(items, 10, functor)->PrintItem();
+	FindItem_Functor<Functor_Price>(items, 10, functor)->PrintItem();
 
 	// Tier 10
 	Functor_Tier functor2;
 	functor2.targetTier = 10;
-	FindItem_Functor(items, 10, functor2)->PrintItem();
-
+	FindItem_Functor<Functor_Tier>(items, 10, functor2)->PrintItem();
 
 	return 0;
 }
