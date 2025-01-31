@@ -60,6 +60,8 @@ using namespace DirectX;
 // TEXTURE
 #include "Core/Texture/SRV.h"
 #include "Core/Texture/SamplerState.h"
+#include "Core/Texture/BlendState.h"
+#include "Core/Texture/StateManager.h"
 
 // BUFFER
 #include "Core/Buffers/ConstantBuffer.h"
@@ -74,13 +76,6 @@ using namespace DirectX;
 // PROGRAM
 #include "Program/Program.h"
 
-
-// MACRO
-#define DEVICE	Device::Instance()->GetDevice()
-#define DC		Device::Instance()->GetDC()
-
-#define WIN_WIDTH		1200
-#define WIN_HEIGHT		720
-#define CENTER			Vector(WIN_WIDTH * 0.5f, WIN_HEIGHT * 0.5f)
+#include "GMacro.h"
 
 extern HWND hWnd;

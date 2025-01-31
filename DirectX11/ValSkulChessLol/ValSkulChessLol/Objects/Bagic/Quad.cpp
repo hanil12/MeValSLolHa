@@ -30,7 +30,7 @@ void Quad::Render()
     _transform->SetVS(0);
 
     _srv->PSSet_SRV(0);
-    _samplerState->PSSet_Sampler(0);
+    SAMPLER->PSSet_Sampler(0);
 
     DC->DrawIndexed(_indices.size(), 0, 0);
 }
@@ -41,7 +41,6 @@ void Quad::CreateMaterial(wstring textureFile)
     _ps = make_shared<PixelShader>(L"Shaders/TutorialShader.hlsl");
 
     _srv = make_shared<SRV>(textureFile);
-    _samplerState = make_shared<SamplerState>();
 }
 
 void Quad::CreateMesh()

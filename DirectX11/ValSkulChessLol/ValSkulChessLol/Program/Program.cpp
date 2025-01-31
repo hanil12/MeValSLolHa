@@ -40,6 +40,9 @@ void Program::Render()
     
     DC->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
+    ALPAH->SetState();
+    //ADDITIVE->SetState();
+
     // 快府啊 弊副 葛电 巴
     _view->SetVS(1);
     _projection->SetVS(2);

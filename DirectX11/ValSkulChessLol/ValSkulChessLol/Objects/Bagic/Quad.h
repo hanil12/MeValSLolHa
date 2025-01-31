@@ -28,7 +28,6 @@ private:
 
 	// material : Texture
 	shared_ptr<SRV> _srv;
-	shared_ptr<SamplerState> _samplerState;
 
 	shared_ptr<Transform> _transform;
 };
