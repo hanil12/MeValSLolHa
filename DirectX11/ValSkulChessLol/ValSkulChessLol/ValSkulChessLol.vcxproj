@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\ArrowScene.h" />
     <ClInclude Include="Core\Texture\BlendState.h" />
     <ClInclude Include="Core\Buffers\ConstantBuffer.h" />
     <ClInclude Include="Core\Buffers\BufferLayout.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Core\Render\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\ArrowScene.cpp" />
     <ClCompile Include="Core\Texture\BlendState.cpp" />
     <ClCompile Include="Core\Buffers\ConstantBuffer.cpp" />
     <ClCompile Include="Core\Device\Device.cpp" />
@@ -206,7 +208,10 @@
     <ResourceCompile Include="ValSkulChessLol.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resource\Bow.png" />
+    <Image Include="Resource\Bullet.png" />
     <Image Include="Resource\earth.png" />
+    <Image Include="Resource\monster.png" />
     <Image Include="Resource\moon.png" />
     <Image Include="Resource\SIUUUU.jpg" />
     <Image Include="Resource\sun.png" />
