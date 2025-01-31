@@ -17,7 +17,10 @@ public:
 private:
 	// mesh
 	vector<Vertex_Texture> _vertices;
+	vector<UINT>		   _indices;
+
 	shared_ptr<VertexBuffer> _vertexBuffer;
+	shared_ptr<IndexBuffer>	 _indexBuffer;
 
 	// material : Shader
 	shared_ptr<VertexShader> _vs;

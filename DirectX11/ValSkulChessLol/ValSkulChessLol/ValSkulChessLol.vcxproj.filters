@@ -39,6 +39,7 @@
     <ClInclude Include="Core\Math\Vector.h" />
     <ClInclude Include="Core\Math\Transform.h" />
     <ClInclude Include="Scene\SolarSystemScene.h" />
+    <ClInclude Include="Core\Render\IndexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -87,6 +88,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\SolarSystemScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Render\IndexBuffer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

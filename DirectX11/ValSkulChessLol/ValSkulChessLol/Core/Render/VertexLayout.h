@@ -9,4 +9,7 @@ struct Vertex_Texture
 {
     XMFLOAT3 pos;
     XMFLOAT2 uv;
+
+    // ºû
+    // Normal ¹ý¼±
 };

@@ -153,6 +153,7 @@
     <ClInclude Include="Core\Math\Vector.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Core\Render\PixelShader.h" />
+    <ClInclude Include="Core\Render\IndexBuffer.h" />
     <ClInclude Include="Program\Program.h" />
     <ClInclude Include="Objects\Bagic\Quad.h" />
     <ClInclude Include="Resource.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="Core\Render\PixelShader.cpp" />
     <ClCompile Include="Core\Texture\SamplerState.cpp" />
     <ClCompile Include="Core\Texture\SRV.cpp" />
+    <ClCompile Include="Core\Render\IndexBuffer.cpp" />
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Objects\Bagic\Quad.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />

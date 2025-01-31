@@ -53,6 +53,7 @@ using namespace DirectX;
 // RENDER
 #include "Core/Render/VertexLayout.h"
 #include "Core/Render/VertexBuffer.h"
+#include "Core/Render/IndexBuffer.h"
 #include "Core/Render/VertexShader.h"
 #include "Core/Render/PixelShader.h"
 
