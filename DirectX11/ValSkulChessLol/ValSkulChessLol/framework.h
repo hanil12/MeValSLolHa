@@ -67,6 +67,9 @@ using namespace DirectX;
 #include "Core/Buffers/ConstantBuffer.h"
 #include "Core/Buffers/BufferLayout.h"
 
+// Utility
+#include "Core/Utility/InputManager.h"
+
 // OBJECTS - bagic
 #include "Objects/Bagic/Quad.h"
 

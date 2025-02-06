@@ -57,4 +57,6 @@ public:
 	{
 		return x * other.y - y * other.x;
 	}
+
+	float Angle() { return atan2(y, x); }
 };

@@ -44,6 +44,8 @@
     <ClInclude Include="Core\Texture\BlendState.h" />
     <ClInclude Include="GMacro.h" />
     <ClInclude Include="Scene\ArrowScene.h" />
+    <ClInclude Include="Core\Utility\InputManager.h" />
+    <ClInclude Include="Objects\Arrow\Arrow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -104,6 +106,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Scene\ArrowScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Utility\InputManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Arrow\Arrow.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

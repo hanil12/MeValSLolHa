@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\Arrow\Arrow.h" />
+    <ClInclude Include="Core\Utility\InputManager.h" />
     <ClInclude Include="Scene\ArrowScene.h" />
     <ClInclude Include="Core\Texture\BlendState.h" />
     <ClInclude Include="Core\Buffers\ConstantBuffer.h" />
@@ -174,6 +176,8 @@
     <ClInclude Include="Core\Render\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Objects\Arrow\Arrow.cpp" />
+    <ClCompile Include="Core\Utility\InputManager.cpp" />
     <ClCompile Include="Scene\ArrowScene.cpp" />
     <ClCompile Include="Core\Texture\BlendState.cpp" />
     <ClCompile Include="Core\Buffers\ConstantBuffer.cpp" />
