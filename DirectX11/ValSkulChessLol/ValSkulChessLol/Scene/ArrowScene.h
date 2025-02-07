@@ -17,5 +17,7 @@ private:
 
 	// muzzle
 	shared_ptr<Transform> _muzzle;
+
+	shared_ptr<RectCollider> _rectCollider;
 };
 

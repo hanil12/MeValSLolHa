@@ -71,6 +71,9 @@ using namespace DirectX;
 #include "Core/Utility/InputManager.h"
 #include "Core/Utility/TimeManager.h"
 
+// Collider
+#include "Core/Math/Collider/RectCollider.h"
+
 // OBJECTS - bagic
 #include "Objects/Bagic/Quad.h"
 

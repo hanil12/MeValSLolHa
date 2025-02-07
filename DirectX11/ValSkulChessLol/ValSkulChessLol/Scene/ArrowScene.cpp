@@ -18,6 +18,8 @@ ArrowScene::ArrowScene()
 	_bow->GetTransform()->SetScale({ 0.5f, 0.5f });
 	_muzzle->SetParent(_bow->GetTransform());
 	_muzzle->SetPos(Vector(100, 0));
+
+	_rectCollider = make_shared<RectCollider>(CENTER, Vector(100, 100));
 }
 
 ArrowScene::~ArrowScene()
@@ -26,6 +28,8 @@ ArrowScene::~ArrowScene()
 
 void ArrowScene::Update()
 {
+	_rectCollider->Update();
+
 	_bow->Update();
 	_muzzle->Update();
 	
@@ -49,6 +53,8 @@ void ArrowScene::Render()
 	{
 		_arrows[i]->Render();
 	}
+
+	_rectCollider->Render();
 }
 
 void ArrowScene::Input()

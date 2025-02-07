@@ -47,6 +47,7 @@
     <ClInclude Include="Core\Utility\InputManager.h" />
     <ClInclude Include="Objects\Arrow\Arrow.h" />
     <ClInclude Include="Core\Utility\TimeManager.h" />
+    <ClInclude Include="Core\Math\Collider\RectCollider.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -118,6 +119,9 @@
     <ClCompile Include="Core\Utility\TimeManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Math\Collider\RectCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ValSkulChessLol.rc">
@@ -155,5 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\TutorialShader.hlsl" />
+    <FxCompile Include="Shaders\ColliderVertexShader.hlsl" />
+    <FxCompile Include="Shaders\ColliderPixelShader.hlsl" />
   </ItemGroup>
 </Project>
