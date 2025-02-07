@@ -69,6 +69,7 @@ using namespace DirectX;
 
 // Utility
 #include "Core/Utility/InputManager.h"
+#include "Core/Utility/TimeManager.h"
 
 // OBJECTS - bagic
 #include "Objects/Bagic/Quad.h"

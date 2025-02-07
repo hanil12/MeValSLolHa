@@ -15,11 +15,11 @@ void Arrow::Update()
 	if (!_isActive) return;
 
 	_arrow->Update();
-	_arrow->GetTransform()->AddPos(_arrowDir * _arrowSpeed);
+	_arrow->GetTransform()->AddPos(_arrowDir * 5.0f * TimeManager::Instance()->DeltaTime());
 
 	// Update가 컴퓨터마다 호출되는 수 다르다
-	_time += 0.001f;
-	if (_time > _lifeTime)
+	_time += TimeManager::Instance()->DeltaTime();
+	if (_time > 10.0f)
 	{
 		_time = 0.0f;
 		_isActive = false;

@@ -20,7 +20,7 @@ public:
 
 	bool _isActive = false;
 	Vector _arrowDir = Vector(0, 0);
-	float _arrowSpeed = 0.1f;
+	float _arrowSpeed = 300.0f;
 	shared_ptr<Quad> _arrow;
 };
 

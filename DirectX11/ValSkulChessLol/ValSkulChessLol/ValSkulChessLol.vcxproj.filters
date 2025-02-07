@@ -46,6 +46,7 @@
     <ClInclude Include="Scene\ArrowScene.h" />
     <ClInclude Include="Core\Utility\InputManager.h" />
     <ClInclude Include="Objects\Arrow\Arrow.h" />
+    <ClInclude Include="Core\Utility\TimeManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -112,6 +113,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Objects\Arrow\Arrow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Utility\TimeManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

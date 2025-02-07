@@ -170,6 +170,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Scene\TutorialScene.h" />
     <ClInclude Include="Core\Math\Transform.h" />
+    <ClInclude Include="Core\Utility\TimeManager.h" />
     <ClInclude Include="ValSkulChessLol.h" />
     <ClInclude Include="Core\Render\VertexBuffer.h" />
     <ClInclude Include="Core\Render\VertexLayout.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="Core\Math\Transform.cpp" />
     <ClCompile Include="Scene\SolarSystemScene.cpp" />
     <ClCompile Include="Core\Texture\StateManager.cpp" />
+    <ClCompile Include="Core\Utility\TimeManager.cpp" />
     <ClCompile Include="ValSkulChessLol.cpp" />
     <ClCompile Include="Core\Render\VertexBuffer.cpp" />
     <ClCompile Include="Core\Render\VertexLayout.cpp" />
