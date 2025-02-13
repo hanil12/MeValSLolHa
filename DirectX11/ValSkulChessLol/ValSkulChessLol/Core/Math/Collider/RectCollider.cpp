@@ -40,6 +40,19 @@ void RectCollider::Render()
     DC->Draw(_vertices.size(), 0);
 }
 
+RectCollider::OBB_DESC RectCollider::GetOBB()
+{
+    OBB_DESC result;
+
+
+    return result;
+}
+
+bool RectCollider::IsCollision(Vector pos)
+{
+    return false;
+}
+
 void RectCollider::CreateMesh()
 {
     _vertices =

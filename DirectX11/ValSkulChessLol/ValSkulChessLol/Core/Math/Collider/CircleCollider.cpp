@@ -49,7 +49,9 @@ bool CircleCollider::IsCollision(Vector pos)
 
 bool CircleCollider::IsCollision(shared_ptr<CircleCollider> other)
 {
-	return false;
+	Vector v = other->GetWorldCenter() - GetWorldCenter();
+
+	return v.Length() < GetWorldRadius() + other->GetWorldRadius();
 }
 
 void CircleCollider::CreateMesh()
