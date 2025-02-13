@@ -10,6 +10,11 @@ public:
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
 
+	void SetRed() { _colorBuffer->SetData(XMFLOAT4(1, 0, 0, 1)); }
+	void SetGreen() { _colorBuffer->SetData(XMFLOAT4(0, 1, 0, 1)); }
+
+	bool IsCollision(Vector pos);
+
 private:
 	float _radius;
 	Vector _center;

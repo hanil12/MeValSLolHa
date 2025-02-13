@@ -9,6 +9,9 @@ CircleCollider::CircleCollider(Vector center, float radius)
 
 	_transform = make_shared<Transform>();
 	_transform->SetPos(center);
+
+	_colorBuffer = make_shared<ColorBuffer>();
+	SetGreen();
 }
 
 CircleCollider::~CircleCollider()
@@ -18,11 +21,14 @@ CircleCollider::~CircleCollider()
 void CircleCollider::Update()
 {
 	_transform->Update();
+	_colorBuffer->Update();
 }
 
 void CircleCollider::Render()
 {
+	_vs->IASetInputLayout();
 	_transform->SetVS(0);
+	_colorBuffer->SetPS(0);
 
 	_vertexBuffer->IASet(0);
 
@@ -32,6 +38,13 @@ void CircleCollider::Render()
 	_ps->PSSet();
 
 	DC->Draw(_vertices.size(), 0);
+}
+
+bool CircleCollider::IsCollision(Vector pos)
+{
+
+
+	return false;
 }
 
 void CircleCollider::CreateMesh()

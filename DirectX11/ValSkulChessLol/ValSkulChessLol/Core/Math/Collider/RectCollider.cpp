@@ -10,7 +10,8 @@ RectCollider::RectCollider(Vector center, Vector size)
     _transform = make_shared<Transform>();
     _transform->SetPos(center);
 
-    // TODO colorBuffer;
+    _colorBuffer = make_shared<ColorBuffer>();
+    SetGreen();
 }
 
 RectCollider::~RectCollider()
@@ -20,13 +21,16 @@ RectCollider::~RectCollider()
 void RectCollider::Update()
 {
     _transform->Update();
+    _colorBuffer->Update();
 }
 
 void RectCollider::Render()
 {
-    _transform->SetVS(0);
-
+    _vs->IASetInputLayout();
     _vertexBuffer->IASet(0);
+
+    _transform->SetVS(0);
+    _colorBuffer->SetPS(0);
 
     DC->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
 

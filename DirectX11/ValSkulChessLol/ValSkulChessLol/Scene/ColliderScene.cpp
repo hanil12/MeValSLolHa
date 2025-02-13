@@ -3,7 +3,7 @@
 
 ColliderScene::ColliderScene()
 {
-	_rect = make_shared<RectCollider>(CENTER, Vector(150, 40));
+	_rect = make_shared<RectCollider>(Vector(0,0), Vector(100, 100));
 	_circle = make_shared<CircleCollider>(CENTER, 100);
 }
 
