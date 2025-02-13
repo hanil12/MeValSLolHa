@@ -2,7 +2,7 @@
 #include "CircleCollider.h"
 
 CircleCollider::CircleCollider(Vector center, float radius)
-: _center(center), _radius(radius)
+: _radius(radius)
 {
 	CreateMesh();
 	CreateMaterial();
@@ -42,8 +42,13 @@ void CircleCollider::Render()
 
 bool CircleCollider::IsCollision(Vector pos)
 {
+	Vector v = pos - GetWorldCenter();
 
+	return v.Length() < GetWorldRadius();
+}
 
+bool CircleCollider::IsCollision(shared_ptr<CircleCollider> other)
+{
 	return false;
 }
 

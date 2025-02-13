@@ -9,8 +9,11 @@ public:
 	virtual void Update() override;
 	virtual void Render() override;
 
+	void Input();
+
 private:
 	shared_ptr<RectCollider> _rect;
 	shared_ptr<CircleCollider> _circle;
+	shared_ptr<CircleCollider> _movingCircle;
 };
 

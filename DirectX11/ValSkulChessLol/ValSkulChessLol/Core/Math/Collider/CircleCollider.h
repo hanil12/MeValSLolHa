@@ -10,14 +10,19 @@ public:
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
 
+	Vector GetCenter() { return _transform->GetLocalPos(); }
+	Vector GetWorldCenter() { return _transform->GetWorldPos(); }
+
+	float GetWorldRadius() { return _radius * _transform->GetWorldScale().x; }
+
 	void SetRed() { _colorBuffer->SetData(XMFLOAT4(1, 0, 0, 1)); }
 	void SetGreen() { _colorBuffer->SetData(XMFLOAT4(0, 1, 0, 1)); }
 
 	bool IsCollision(Vector pos);
+	bool IsCollision(shared_ptr<CircleCollider> other);
 
 private:
 	float _radius;
-	Vector _center;
 
 	void CreateMesh();
 	void CreateMaterial();

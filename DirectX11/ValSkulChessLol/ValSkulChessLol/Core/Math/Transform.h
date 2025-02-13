@@ -17,9 +17,11 @@ public:
 	Vector GetLocalPos() { return _pos; }
 	Vector GetWorldPos(); // World»ó¿¡ ÁÂÇ¥
 	Vector GetScale() { return _scale; }
+	Vector GetWorldScale();
 	float GetAngle() { return _angle; }
 
 	void AddPos(Vector pos) { _pos = _pos + pos; }
+	void AddScale(Vector scale) { _scale = _scale + scale; }
 	void AddAngle(float value) { _angle += value; }
 
 	void SetParent(shared_ptr<Transform> parent) { _parent = parent; }
