@@ -19,5 +19,6 @@ private:
 	shared_ptr<Transform> _muzzle;
 
 	shared_ptr<RectCollider> _rectCollider;
+	shared_ptr<CircleCollider> _temp;
 };
 

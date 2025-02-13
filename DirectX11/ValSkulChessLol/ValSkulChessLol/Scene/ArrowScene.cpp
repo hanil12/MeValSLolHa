@@ -20,6 +20,7 @@ ArrowScene::ArrowScene()
 	_muzzle->SetPos(Vector(100, 0));
 
 	_rectCollider = make_shared<RectCollider>(CENTER, Vector(100, 100));
+	_temp = make_shared<CircleCollider>(CENTER, 100);
 }
 
 ArrowScene::~ArrowScene()
@@ -28,6 +29,7 @@ ArrowScene::~ArrowScene()
 
 void ArrowScene::Update()
 {
+	_temp->Update();
 	_rectCollider->Update();
 
 	_bow->Update();
@@ -54,6 +56,7 @@ void ArrowScene::Render()
 		_arrows[i]->Render();
 	}
 
+	_temp->Render();
 	_rectCollider->Render();
 }
 

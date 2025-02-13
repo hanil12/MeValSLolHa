@@ -73,6 +73,7 @@ using namespace DirectX;
 
 // Collider
 #include "Core/Math/Collider/RectCollider.h"
+#include "Core/Math/Collider/CircleCollider.h"
 
 // OBJECTS - bagic
 #include "Objects/Bagic/Quad.h"

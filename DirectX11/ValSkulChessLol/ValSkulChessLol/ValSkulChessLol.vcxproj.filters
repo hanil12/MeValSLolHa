@@ -48,6 +48,8 @@
     <ClInclude Include="Objects\Arrow\Arrow.h" />
     <ClInclude Include="Core\Utility\TimeManager.h" />
     <ClInclude Include="Core\Math\Collider\RectCollider.h" />
+    <ClInclude Include="Core\Math\Collider\CircleCollider.h" />
+    <ClInclude Include="Scene\ColliderScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -120,6 +122,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Core\Math\Collider\RectCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Math\Collider\CircleCollider.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ColliderScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

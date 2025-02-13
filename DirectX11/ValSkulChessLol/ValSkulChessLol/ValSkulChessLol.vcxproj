@@ -147,6 +147,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\ColliderScene.h" />
+    <ClInclude Include="Core\Math\Collider\CircleCollider.h" />
     <ClInclude Include="Objects\Arrow\Arrow.h" />
     <ClInclude Include="Core\Utility\InputManager.h" />
     <ClInclude Include="Core\Math\Collider\RectCollider.h" />
@@ -178,6 +180,8 @@
     <ClInclude Include="Core\Render\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\ColliderScene.cpp" />
+    <ClCompile Include="Core\Math\Collider\CircleCollider.cpp" />
     <ClCompile Include="Objects\Arrow\Arrow.cpp" />
     <ClCompile Include="Core\Utility\InputManager.cpp" />
     <ClCompile Include="Core\Math\Collider\RectCollider.cpp" />
