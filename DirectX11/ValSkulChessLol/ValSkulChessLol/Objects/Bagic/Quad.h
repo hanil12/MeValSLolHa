@@ -13,6 +13,7 @@ public:
 	void CreateMesh();
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
+	Vector GetImageSize() { return _srv->GetImageSize(); }
 
 private:
 	// mesh

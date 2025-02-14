@@ -23,7 +23,13 @@ public:
 
 	~List()
 	{
-		// TODO
+		int size = _size;
+		for (int i = 0; i < size; i++)
+		{
+			pop_back();
+		}
+
+		delete _head;
 	}
 
 	void push_back(const int& data)
@@ -61,6 +67,21 @@ public:
 		prevNode->next = newNode;
 
 		_size++;
+	}
+
+	void pop_back()
+	{
+		Node* targetNode = _head->prev;
+
+		Node* prev = targetNode->prev;
+		Node* next = _head;
+
+		delete targetNode;
+
+		prev->next = next;
+		next->prev = prev;
+
+		_size--;
 	}
 
 	unsigned int size() { return _size; }

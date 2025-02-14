@@ -27,6 +27,14 @@ ArrowScene::~ArrowScene()
 {
 }
 
+void ArrowScene::PreUpdate()
+{
+	for (int i = 0; i < 30; i++)
+	{
+		_arrows[i]->PreUpdate();
+	}
+}
+
 void ArrowScene::Update()
 {
 	_temp->Update();
@@ -58,6 +66,14 @@ void ArrowScene::Render()
 
 	_temp->Render();
 	_rectCollider->Render();
+}
+
+void ArrowScene::PostRender()
+{
+	for (int i = 0; i < 30; i++)
+	{
+		_arrows[i]->PostRender();
+	}
 }
 
 void ArrowScene::Input()

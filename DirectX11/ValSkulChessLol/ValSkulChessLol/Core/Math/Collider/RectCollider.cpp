@@ -81,7 +81,25 @@ bool RectCollider::IsCollision(shared_ptr<RectCollider> other)
 
 bool RectCollider::IsCollision(shared_ptr<CircleCollider> other)
 {
-    return false;
+    OBB_DESC desc = GetOBB();
+    Vector aTob = other->GetWorldCenter() - desc.pos;
+    float circleRaidus = other->GetWorldRadius();
+
+    float longest = desc.halfSize.Length();
+    if (longest + circleRaidus < aTob.Length())
+        return false;
+
+    Vector uea1 = desc.direction[0];
+    float lengthA = abs(uea1.Dot(aTob));
+    if (lengthA > circleRaidus + desc.halfSize.x)
+        return false;
+
+    Vector uea2 = desc.direction[1];
+    float lengthB = abs(uea2.Dot(aTob));
+    if (lengthB > circleRaidus + desc.halfSize.y)
+        return false;
+
+    return true;
 }
 
 void RectCollider::CreateMesh()

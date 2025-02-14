@@ -21,6 +21,9 @@
     <ClCompile Include="List.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="VectorList.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyList.h">

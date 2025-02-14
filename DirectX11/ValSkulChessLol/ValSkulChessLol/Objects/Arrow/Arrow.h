@@ -5,8 +5,10 @@ public:
 	Arrow();
 	~Arrow();
 
+	void PreUpdate();
 	void Update();
 	void Render();
+	void PostRender();
 
 	void SetDir(Vector dir);
 	void SetPos(Vector pos);
@@ -22,5 +24,6 @@ public:
 	Vector _arrowDir = Vector(0, 0);
 	float _arrowSpeed = 300.0f;
 	shared_ptr<Quad> _arrow;
+	shared_ptr<CircleCollider> _circleCollider;
 };
 

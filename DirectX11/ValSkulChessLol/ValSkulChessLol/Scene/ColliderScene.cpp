@@ -6,11 +6,10 @@ ColliderScene::ColliderScene()
 	_standRect = make_shared<RectCollider>(Vector(0,0), Vector(100, 100));
 	_circle = make_shared<CircleCollider>(CENTER, 100);
 	_movingCircle = make_shared<CircleCollider>(Vector(0, 0), 50);
-	_rect = make_shared<RectCollider>(CENTER, Vector(120, 70));
+	_movingRect = make_shared<RectCollider>(CENTER, Vector(120, 70));
 
 
 	_circle->GetTransform()->SetParent(_standRect->GetTransform());
-	_rect->GetTransform()->SetParent(_standRect->GetTransform());
 }
 
 ColliderScene::~ColliderScene()
@@ -20,26 +19,26 @@ ColliderScene::~ColliderScene()
 void ColliderScene::Update()
 {
 	_standRect->Update();
-	_rect->Update();
 	_circle->Update();
 	_movingCircle->Update();
+	_movingRect->Update();
 
 	Input();
 
-	if (_rect->IsCollision(mousePos))
+	if (_circle->IsCollision(_movingRect))
 	{
-		_rect->SetRed();
+		_circle->SetRed();
 	}
 	else
 	{
-		_rect->SetGreen();
+		_circle->SetGreen();
 	}
 }
 
 void ColliderScene::Render()
 {
 	_standRect->Render();
-	_rect->Render();
+	_movingRect->Render();
 	_circle->Render();
 	_movingCircle->Render();
 }
@@ -64,5 +63,6 @@ void ColliderScene::Input()
 		_standRect->GetTransform()->AddAngle(-DELTA_TIME);
 	}
 	
-	//_movingCircle->GetTransform()->SetPos(mousePos);
+	_movingCircle->GetTransform()->SetPos(mousePos);
+	_movingRect->GetTransform()->SetPos(mousePos);
 }

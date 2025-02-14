@@ -50,6 +50,7 @@
     <ClInclude Include="Core\Math\Collider\RectCollider.h" />
     <ClInclude Include="Core\Math\Collider\CircleCollider.h" />
     <ClInclude Include="Scene\ColliderScene.h" />
+    <ClInclude Include="Scene\DungreedScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ValSkulChessLol.cpp">
@@ -130,6 +131,9 @@
     <ClCompile Include="Scene\ColliderScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\DungreedScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ValSkulChessLol.rc">
@@ -162,6 +166,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Resource\monster.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Resource\Player.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

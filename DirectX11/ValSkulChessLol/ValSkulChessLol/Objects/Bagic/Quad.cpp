@@ -3,8 +3,8 @@
 
 Quad::Quad(wstring textureFile)
 {
-	CreateMesh();
 	CreateMaterial(textureFile);
+	CreateMesh();
 
     _transform = make_shared<Transform>();
 }
@@ -45,12 +45,13 @@ void Quad::CreateMaterial(wstring textureFile)
 
 void Quad::CreateMesh()
 {
+    Vector halfSize = _srv->GetImageSize() * 0.5f;
 	_vertices =
     {
-        { XMFLOAT3(-100, 100, 0.0f), XMFLOAT2(0,0) }, //  좌측 상단
-        { XMFLOAT3(100, 100, 0.0f), XMFLOAT2(1,0)}, // 우측 상단
-        { XMFLOAT3(100, -100, 0.0f), XMFLOAT2(1,1) }, // 우측 하단
-        { XMFLOAT3(-100, -100, 0.0f), XMFLOAT2(0,1)}, // 좌측 하단
+        { XMFLOAT3(-halfSize.x, halfSize.y, 0.0f), XMFLOAT2(0,0) }, //  좌측 상단
+        { XMFLOAT3(halfSize.x, halfSize.y, 0.0f), XMFLOAT2(1,0)}, // 우측 상단
+        { XMFLOAT3(halfSize.x, -halfSize.y, 0.0f), XMFLOAT2(1,1) }, // 우측 하단
+        { XMFLOAT3(-halfSize.x, -halfSize.y, 0.0f), XMFLOAT2(0,1)}, // 좌측 하단
     };
 
     _indices.push_back(0);

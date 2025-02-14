@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\DungreedScene.h" />
     <ClInclude Include="Scene\ColliderScene.h" />
     <ClInclude Include="Core\Math\Collider\CircleCollider.h" />
     <ClInclude Include="Objects\Arrow\Arrow.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Core\Render\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\DungreedScene.cpp" />
     <ClCompile Include="Scene\ColliderScene.cpp" />
     <ClCompile Include="Core\Math\Collider\CircleCollider.cpp" />
     <ClCompile Include="Objects\Arrow\Arrow.cpp" />
@@ -225,6 +227,7 @@
     <Image Include="Resource\earth.png" />
     <Image Include="Resource\monster.png" />
     <Image Include="Resource\moon.png" />
+    <Image Include="Resource\Player.png" />
     <Image Include="Resource\SIUUUU.jpg" />
     <Image Include="Resource\sun.png" />
     <Image Include="small.ico" />

@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "CircleCollider.h"
+#include "RectCollider.h"
 
 CircleCollider::CircleCollider(Vector center, float radius)
 : _radius(radius)
@@ -52,6 +53,11 @@ bool CircleCollider::IsCollision(shared_ptr<CircleCollider> other)
 	Vector v = other->GetWorldCenter() - GetWorldCenter();
 
 	return v.Length() < GetWorldRadius() + other->GetWorldRadius();
+}
+
+bool CircleCollider::IsCollision(shared_ptr<RectCollider> other)
+{
+	return other->IsCollision(shared_from_this());
 }
 
 void CircleCollider::CreateMesh()

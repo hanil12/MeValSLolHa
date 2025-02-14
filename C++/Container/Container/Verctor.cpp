@@ -32,5 +32,10 @@ int main()
 		cout << v[i] << endl;
 	}
 
+	v.clear();
+
+	vector<int>().swap(v); // 임시객체
+
+
 	return 0;
 }
