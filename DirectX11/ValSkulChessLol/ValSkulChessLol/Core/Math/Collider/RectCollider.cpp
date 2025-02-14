@@ -1,8 +1,9 @@
 #include "framework.h"
 #include "RectCollider.h"
+#include "CircleCollider.h"
 
 RectCollider::RectCollider(Vector center, Vector size)
-: _center(center), _halfSize(size * 0.5f)
+: _halfSize(size * 0.5f)
 {
 	CreateMesh();
 	CreateMaterial();
@@ -43,12 +44,42 @@ void RectCollider::Render()
 RectCollider::OBB_DESC RectCollider::GetOBB()
 {
     OBB_DESC result;
-
+    result.pos = GetWorldCenter();
+    result.halfSize.x = _halfSize.x * _transform->GetWorldScale().x;
+    result.halfSize.y = _halfSize.y * _transform->GetWorldScale().y;
+    XMMATRIX m = _transform->GetMatrix();
+    result.direction[0] = Vector(m.r[0].m128_f32[0], m.r[0].m128_f32[1]).UnitVector();
+    result.direction[1] = Vector(m.r[1].m128_f32[0], m.r[1].m128_f32[1]).UnitVector();
 
     return result;
 }
 
 bool RectCollider::IsCollision(Vector pos)
+{
+    OBB_DESC desc = GetOBB();
+
+    Vector aTob = pos - desc.pos;
+    Vector nea1 = desc.direction[0];
+    float length1 = abs(nea1.Dot(aTob));
+
+    if (length1 > desc.halfSize.x)
+        return false;
+
+    Vector nea2 = desc.direction[1];
+    float length2 = abs(nea2.Dot(aTob));
+
+    if (length2 > desc.halfSize.y)
+        return false;
+
+    return true;
+}
+
+bool RectCollider::IsCollision(shared_ptr<RectCollider> other)
+{
+    return false;
+}
+
+bool RectCollider::IsCollision(shared_ptr<CircleCollider> other)
 {
     return false;
 }

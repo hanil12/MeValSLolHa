@@ -25,6 +25,8 @@ public:
 	OBB_DESC GetOBB();
 
 	bool IsCollision(Vector pos);
+	bool IsCollision(shared_ptr<RectCollider> other);
+	bool IsCollision(shared_ptr<class CircleCollider> other);
 
 private:
 	Vector _halfSize;
