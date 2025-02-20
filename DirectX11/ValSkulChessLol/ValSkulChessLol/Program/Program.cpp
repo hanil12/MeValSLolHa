@@ -9,7 +9,7 @@
 
 Program::Program()
 {
-    _scene = make_shared<ArrowScene>();
+    _scene = make_shared<BamSurviver>();
 
     _view = make_shared<MatrixBuffer>();
     _projection = make_shared<MatrixBuffer>();

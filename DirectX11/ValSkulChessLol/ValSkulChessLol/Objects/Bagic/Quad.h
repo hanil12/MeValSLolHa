@@ -14,6 +14,8 @@ public:
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
 	Vector GetImageSize() { return _srv->GetImageSize(); }
+	void SetLeftRight(int value) { _leftRightBuffer->SetData(value); _leftRightBuffer->Update(); }
+	void AddColor(XMFLOAT4 color) { _colorBuffer->SetData(color); _colorBuffer->Update(); }
 
 private:
 	// mesh
@@ -31,5 +33,7 @@ private:
 	shared_ptr<SRV> _srv;
 
 	shared_ptr<Transform> _transform;
+	shared_ptr<LeftRightBuffer> _leftRightBuffer;
+	shared_ptr<ColorBuffer> _colorBuffer;
 };
 

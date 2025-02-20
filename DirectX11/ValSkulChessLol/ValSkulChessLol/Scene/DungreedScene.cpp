@@ -1,42 +1,42 @@
 #include "framework.h"
 #include "DungreedScene.h"
 
-DungreedScene::DungreedScene()
+#include "Objects/Arrow/Player.h"
+
+BamSurviver::BamSurviver()
 {
-	_player = make_shared<Quad>(L"Resource/Player.png");
-	_playerRect = make_shared<RectCollider>(Vector(0,0), _player->GetImageSize());
+	_backGround = make_shared<Quad>(L"Resource/Map.png");
+	_player = make_shared<Player>();
 
-	_player->GetTransform()->SetPos(CENTER);
-	_playerRect->GetTransform()->SetParent(_player->GetTransform());
-
-	_player->GetTransform()->SetScale(Vector(0.1f, 0.1f));
+	_backGround->GetTransform()->SetPos(CENTER);
+	_backGround->GetTransform()->SetScale(Vector(1.5f, 1.5f));
+	_backGround->AddColor(XMFLOAT4(0.2f, 0.2f, 0.2f, 0.0f));
+	_backGround->Update();
 }
 
-DungreedScene::~DungreedScene()
+BamSurviver::~BamSurviver()
 {
 }
 
-void DungreedScene::PreUpdate()
+void BamSurviver::PreUpdate()
 {
-	_playerRect->Update();
+	_player->PreUpdate();
 }
 
-void DungreedScene::Update()
+void BamSurviver::Update()
 {
 	_player->Update();
 }
 
-void DungreedScene::Render()
+void BamSurviver::Render()
 {
+	_backGround->Render();
+
 	_player->Render();
 }
 
-void DungreedScene::PostRender()
+void BamSurviver::PostRender()
 {
-	_playerRect->Render();
+	_player->PostRender();
 }
 
-void DungreedScene::Input()
-{
-
-}
