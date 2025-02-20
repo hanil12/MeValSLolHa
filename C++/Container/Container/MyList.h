@@ -1,21 +1,35 @@
 #pragma once
 
+template<typename T>
 struct Node
 {
 	Node() {}
-	Node(const int& data) : data(data) { }
+	Node(const T& data) : data(data) { }
 
-	int data = 0;
-	Node* next = nullptr;
-	Node* prev = nullptr;
+	T data = 0;
+	Node<T>* next = nullptr;
+	Node<T>* prev = nullptr;
 };
 
+template<typename T>
 class List
 {
 public:
+	//class iteartor
+	//{
+	//	iterator() { _ptr = nullptr; }
+	//	iterator(Node<T>* ptr) : _ptr(ptr) {}
+	//	~iterator() { }
+
+	//	// 과제
+
+	//private:
+	//	Node<T>* _ptr;
+	//};
+
 	List()
 	{
-		_head = new Node();
+		_head = new Node<T>();
 		// 예외처리
 		_head->next = _head;
 		_head->prev = _head;
@@ -32,7 +46,7 @@ public:
 		delete _head;
 	}
 
-	void push_back(const int& data)
+	void push_back(const T& data)
 	{
 		// 노드가 Head밖에 없었다.
 		// -> prev : head, next : head
@@ -40,10 +54,10 @@ public:
 		// 노드가 여러개 있었다
 		// -> prev : head->prev, next : head
 
-		Node* newNode = new Node(data);
+		Node<T>* newNode = new Node<T>(data);
 
-		Node* nextNode = _head;
-		Node* prevNode = _head->prev;
+		Node<T>* nextNode = _head;
+		Node<T>* prevNode = _head->prev;
 
 		newNode->next = nextNode;
 		newNode->prev = prevNode;
@@ -53,12 +67,12 @@ public:
 
 		_size++;
 	}
-	void push_front(const int& data)
+	void push_front(const T& data)
 	{
-		Node* newNode = new Node(data);
+		Node<T>* newNode = new Node<T>(data);
 
-		Node* nextNode = _head->next;
-		Node* prevNode = _head;
+		Node<T>* nextNode = _head->next;
+		Node<T>* prevNode = _head;
 
 		newNode->next = nextNode;
 		newNode->prev = prevNode;
@@ -71,10 +85,10 @@ public:
 
 	void pop_back()
 	{
-		Node* targetNode = _head->prev;
+		Node<T>* targetNode = _head->prev;
 
-		Node* prev = targetNode->prev;
-		Node* next = _head;
+		Node<T>* prev = targetNode->prev;
+		Node<T>* next = _head;
 
 		delete targetNode;
 
@@ -86,12 +100,15 @@ public:
 
 	unsigned int size() { return _size; }
 
-	int operator[](int index)
+	T& operator[](int index)
 	{
 		if (index >= size())
-			return -1; // ERROR
+		{
+			int* temp = (int*)(0xDEADBEEF);
+			*temp = 5;
+		}
 
-		Node* now = _head->next;
+		Node<T>* now = _head->next;
 
 		for (int i = 0; i < index; i++)
 		{
@@ -103,5 +120,5 @@ public:
 
 private:
 	unsigned int _size = 0;
-	Node* _head;
+	Node<T>* _head;
 };

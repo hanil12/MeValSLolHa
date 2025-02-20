@@ -4,6 +4,44 @@ template<typename T>
 class Vector
 {
 public:
+	class iterator
+	{
+	public:
+		iterator() { _ptr = nullptr; }
+		iterator(T* ptr) : _ptr(ptr) {}
+		~iterator() { }
+
+		bool operator==(const iterator& other)
+		{
+			return _ptr == other._ptr;
+		}
+		bool operator!=(const iterator& other)
+		{
+			return _ptr != other._ptr;
+		}
+
+		iterator operator++(int)
+		{
+			iterator result;
+			result = *this;
+			_ptr++;
+
+			return result;
+		}
+		iterator& operator++()
+		{
+			_ptr++;
+			return *this;
+		}
+		T& operator*()
+		{
+			return *_ptr;
+		}
+
+	private:
+		T* _ptr;
+	};
+
 	Vector()
 	{}
 	~Vector()
@@ -32,7 +70,6 @@ public:
 		if(oldData != nullptr)
 			delete[] oldData;
 	}
-
 	void push_back(const T& value)
 	{
 		// ²Ë Â÷ ÀÖ¾ú´Ù
@@ -50,10 +87,13 @@ public:
 		_data[_size] = value;
 		_size++;
 	}
-
 	void pop_back()
 	{
 		--_size;
+	}
+	void clear()
+	{
+		_size = 0;
 	}
 
 	T& operator[](unsigned int index)
@@ -69,14 +109,11 @@ public:
 
 		return _data[index];
 	}
-
-	void clear()
-	{
-		_size = 0;
-	}
-
 	unsigned int size() { return _size; }
 	unsigned int capacity() { return _capacity; }
+
+	iterator begin() { return iterator(_data); }
+	iterator end() { return iterator(&_data[_size]); }
 
 private:
 	unsigned int _capacity;
