@@ -25,6 +25,13 @@ void BamSurviver::PreUpdate()
 
 void BamSurviver::Update()
 {
+	_time += DELTA_TIME;
+	if (_time > 1.0f)
+	{
+		_player->AddBible();
+		_time = 0.0f;
+	}
+
 	_player->Update();
 }
 

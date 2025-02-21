@@ -36,17 +36,17 @@ int main()
 		cout << *iter << endl;
 	}
 
-	list<int> l;
+	List<int> l;
 	l.push_back(10);
 	l.push_back(11);
 	l.push_back(12);
 	l.push_back(13);
 	l.push_back(14);
 
-	list<int>::iterator iter2;
+	List<int>::iterator iter2;
 
-	iter2 = std::find(l.begin(), l.end(), 12);
-	l.insert(iter2, 150);
+	//iter2 = std::find(l.begin(), l.end(), 12);
+	//l.insert(iter2, 150);
 
 	iter2 = l.begin();
 	for (iter2; iter2 != l.end(); iter2++)

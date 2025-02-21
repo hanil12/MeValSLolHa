@@ -1,4 +1,5 @@
 #pragma once
+#include "Objects/Arrow/Bible.h"
 
 class BamSurviver : public Scene
 {
@@ -13,7 +14,10 @@ public:
 	virtual void PostRender() override;
 
 private:
+	float _time = 0.0f;
+
 	shared_ptr<Quad> _backGround;
+	shared_ptr<Bible> _bible;
 
 	shared_ptr<class Player> _player;
 };

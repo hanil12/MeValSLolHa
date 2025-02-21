@@ -4,6 +4,7 @@ class Quad
 {
 public:
 	Quad(wstring textureFile);
+	Quad(wstring textureFile, Vector size);
 	~Quad();
 
 	void Update();
@@ -19,6 +20,7 @@ public:
 
 private:
 	// mesh
+	Vector _halfSize;
 	vector<Vertex_Texture> _vertices;
 	vector<UINT>		   _indices;
 

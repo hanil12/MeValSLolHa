@@ -13,6 +13,19 @@ Quad::Quad(wstring textureFile)
     AddColor(XMFLOAT4(0, 0, 0, 0));
 }
 
+Quad::Quad(wstring textureFile, Vector size)
+{
+    _halfSize = size * 0.5f;
+    CreateMaterial(textureFile);
+    CreateMesh();
+
+    _transform = make_shared<Transform>();
+    _leftRightBuffer = make_shared<LeftRightBuffer>();
+    SetLeftRight(0);
+    _colorBuffer = make_shared<ColorBuffer>();
+    AddColor(XMFLOAT4(0, 0, 0, 0));
+}
+
 Quad::~Quad()
 {
 }
@@ -51,13 +64,15 @@ void Quad::CreateMaterial(wstring textureFile)
 
 void Quad::CreateMesh()
 {
-    Vector halfSize = _srv->GetImageSize() * 0.5f;
+    if(_halfSize.Length() < 0.1f)
+        _halfSize = _srv->GetImageSize() * 0.5f;
+
 	_vertices =
     {
-        { XMFLOAT3(-halfSize.x, halfSize.y, 0.0f), XMFLOAT2(0,0) }, //  좌측 상단
-        { XMFLOAT3(halfSize.x, halfSize.y, 0.0f), XMFLOAT2(1,0)}, // 우측 상단
-        { XMFLOAT3(halfSize.x, -halfSize.y, 0.0f), XMFLOAT2(1,1) }, // 우측 하단
-        { XMFLOAT3(-halfSize.x, -halfSize.y, 0.0f), XMFLOAT2(0,1)}, // 좌측 하단
+        { XMFLOAT3(-_halfSize.x, _halfSize.y, 0.0f), XMFLOAT2(0,0) }, //  좌측 상단
+        { XMFLOAT3(_halfSize.x, _halfSize.y, 0.0f), XMFLOAT2(1,0)}, // 우측 상단
+        { XMFLOAT3(_halfSize.x, -_halfSize.y, 0.0f), XMFLOAT2(1,1) }, // 우측 하단
+        { XMFLOAT3(-_halfSize.x, -_halfSize.y, 0.0f), XMFLOAT2(0,1)}, // 좌측 하단
     };
 
     _indices.push_back(0);

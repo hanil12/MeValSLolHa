@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Objects\Arrow\Bible.h" />
     <ClInclude Include="Objects\Arrow\Player.h" />
     <ClInclude Include="Scene\DungreedScene.h" />
     <ClInclude Include="Scene\ColliderScene.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Core\Render\VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Objects\Arrow\Bible.cpp" />
     <ClCompile Include="Objects\Arrow\Player.cpp" />
     <ClCompile Include="Scene\DungreedScene.cpp" />
     <ClCompile Include="Scene\ColliderScene.cpp" />
