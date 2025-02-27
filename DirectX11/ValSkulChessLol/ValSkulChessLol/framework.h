@@ -28,6 +28,7 @@
 
 #pragma comment(lib,"d3d11.lib")
 #pragma comment(lib,"d3dcompiler.lib")
+#pragma comment(lib,"dxguid.lib")
 
 // 프로젝트 참조
 // 프로젝트에 있는 코드를 제일 간단하게 갖고올 수 있는 방법
