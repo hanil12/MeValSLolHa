@@ -11,11 +11,18 @@ bool FindFunc(int value)
 	return false;
 }
 
+class Player
+{
+public:
+	int _hp;
+	int _atk;
+};
+
 int main()
 {
 	vector<int> v;
 
-	v = { 5, 1, 3, 112, 10, 9, 50, 30 };
+	v = { 5, 1, 3, 112, 10, 9, 50, 30, 3 };
 
 	// 1.  1이 있는지 찾아주세요. 그리고 index나 혹은 iterator자리를 찾아주세요
 	vector<int>::iterator iter;
@@ -73,8 +80,72 @@ int main()
 	// 7. 모든 원소에 3을 곱해주세요. algorithm
 
 	// 8. 중복된 원소들을 '제거'해주세요. algorithm
+	std::sort(v.begin(), v.end());
+	vector<int>::iterator iter2 = std::unique(v.begin(), v.end());
+	v.erase(iter2, v.end());
 
 	// 9. 원소가 11인 원소를 지워주세요. iter, algorithm
+	v.erase(std::remove(v.begin(), v.end(), 5) , v.end());
 
 	// 10. 원소가 10보다 작은 원소들을 지워주세요. algorithm
+	struct RemoveF
+	{
+		bool operator()(const int& value)
+		{
+			if (value < num)
+				return true;
+			return false;
+		}
+
+		int num;
+	};
+
+	RemoveF removeF;
+	removeF.num = 10;
+	v.erase(std::remove_if(v.begin(), v.end(), removeF), v.end());
+
+	iter = v.begin();
+
+	for (iter; iter != v.end(); )
+	{
+		if (*iter < 50)
+		{
+			iter = v.erase(iter);
+			continue;
+		}
+
+		iter++;
+	}
+
+	v.push_back(3);
+	v.push_back(5);
+	v.push_back(1);
+	v.push_back(10);
+	v.push_back(50);
+
+	struct Comparer
+	{
+		bool operator()(int a, int b)
+		{
+			if (a > b)
+				return true;
+			return false;
+		}
+	};
+
+	Comparer comparer;
+
+	std::sort(v.begin(), v.end(), greater<int>());
+
+	vector<Player> players;
+
+	players.push_back({ 100,10 });
+	players.push_back({ 50,3 });
+	players.push_back({ 1000,1 });
+	players.push_back({ 30,30 });
+	players.push_back({ 70,7 });
+
+
+
+	return 0;
 }
