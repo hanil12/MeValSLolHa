@@ -14,6 +14,13 @@ bool FindFunc(int value)
 class Player
 {
 public:
+	bool operator<(const Player& other) const
+	{
+		if (_hp < other._hp)
+			return true;
+		return false;
+	}
+
 	int _hp;
 	int _atk;
 };
@@ -145,7 +152,19 @@ int main()
 	players.push_back({ 30,30 });
 	players.push_back({ 70,7 });
 
+	struct PlayerComparer
+	{
+		bool operator()(Player a, Player b)
+		{
+			if (a._hp < b._hp)
+				return true;
 
+			return false;
+		}
+	};
+
+	PlayerComparer comparer_p;
+	std::sort(players.begin(), players.end(), comparer_p);
 
 	return 0;
 }
