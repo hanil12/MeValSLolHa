@@ -83,6 +83,15 @@ int main()
 	// 5. 원소가 3인 원소들의 개수를 알려주세요. algorithm
 
 	// 6. 원소가 5보다 큰 원소들의 개수를 알려주세요. algorithm
+	int compareNum = 5;
+	auto answer = count_if(v.begin(), v.end(), [&compareNum](const int& element)->bool
+		{
+			if (element > compareNum)
+				return true;
+			return false;
+		});
+
+	cout << "Count_if : " << answer << endl;
 
 	// 7. 모든 원소에 3을 곱해주세요. algorithm
 
