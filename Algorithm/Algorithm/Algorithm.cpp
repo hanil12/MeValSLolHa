@@ -109,8 +109,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return (int) msg.wParam;
 }
 
-
-
 void Init()
 {
 #pragma region Device, DC, SwapChain, RenderTarget
