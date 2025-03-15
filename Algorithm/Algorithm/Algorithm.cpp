@@ -40,6 +40,9 @@ Microsoft::WRL::ComPtr<ID3D11PixelShader> pixelShader;
 
 struct Vertex
 {
+    Vertex() : pos(XMFLOAT3()) {}
+    Vertex(float x, float y) : pos(x, y, 0) {}
+
     XMFLOAT3 pos;
 };
 
@@ -82,15 +85,24 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_ALGORITHM));
 
+    Init();
+
     MSG msg;
 
     // 기본 메시지 루프입니다:
     while (GetMessage(&msg, nullptr, 0, 0))
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else
+        {
+            Render();
         }
     }
 
@@ -171,6 +183,7 @@ void Init()
     D3D11_INPUT_ELEMENT_DESC layout[] =
     {
         {
+            // Semantic Name
             "POSITION",0,DXGI_FORMAT_R32G32B32_FLOAT,0,0,
             D3D11_INPUT_PER_VERTEX_DATA,0
         }
@@ -181,18 +194,17 @@ void Init()
     DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
 
     Microsoft::WRL::ComPtr<ID3DBlob> vertexBlob; // VertexShader를 만들 때 필요한 얘
-    D3DCompileFromFile( /* TODO */L"", nullptr, nullptr,  /* 진입점 이름 */"VS", "vs_5_0", flags, 0, vertexBlob.GetAddressOf(), nullptr);
+    D3DCompileFromFile(L"Shader/TutoVertexShader.hlsl", nullptr, nullptr, "VS", "vs_5_0", flags, 0, vertexBlob.GetAddressOf(), nullptr);
 
     device->CreateInputLayout(layout, layoutSize, vertexBlob->GetBufferPointer(), vertexBlob->GetBufferSize(), inputLayOut.GetAddressOf());
     device->CreateVertexShader(vertexBlob->GetBufferPointer(), vertexBlob->GetBufferSize(), nullptr, IN vertexShader.GetAddressOf());
 
     Microsoft::WRL::ComPtr<ID3DBlob> pixelBlob; // PixelShader를 만들 때 필요한 얘
-    D3DCompileFromFile( /* TODO */L"", nullptr, nullptr, "PS", "ps_5_0", flags, 0, pixelBlob.GetAddressOf(), nullptr);
+    D3DCompileFromFile(L"Shader/TutoPixelShader.hlsl", nullptr, nullptr, "PS", "ps_5_0", flags, 0, pixelBlob.GetAddressOf(), nullptr);
 
     device->CreatePixelShader(pixelBlob->GetBufferPointer(), pixelBlob->GetBufferSize(), nullptr, IN pixelShader.GetAddressOf());
 
-    /* TODO */
-    Vertex vertices[3];
+    Vertex vertices[3] = { {0,0.5f}, {0.5f, -0.5f}, {-0.5f, -0.5f} };
 
     // VertexBuffer 세팅
     D3D11_BUFFER_DESC bd = {};
@@ -208,6 +220,29 @@ void Init()
 
 void Render()
 {
+    FLOAT myColorR = 0.0f;
+    FLOAT myColorG = 0.0f;
+    FLOAT myColorB = 0.0f;
+
+    FLOAT clearColor[4] = { myColorR, myColorG, myColorB, 1.0f };
+
+    dc->ClearRenderTargetView(renderTargetView.Get(), clearColor);
+
+    UINT stride = sizeof(Vertex); // Vertex 3
+    UINT offset = 0;
+
+    // Input 어셈블러 
+    dc->IASetInputLayout(inputLayOut.Get());
+
+    dc->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
+    dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+    dc->VSSetShader(vertexShader.Get(), nullptr, 0);
+    dc->PSSetShader(pixelShader.Get(), nullptr, 0);
+
+    dc->Draw(3, 0);
+
+    swapChain->Present(0, 0);
 }
 
 //
