@@ -3,18 +3,10 @@
 
 TutorialScene::TutorialScene()
 {
-	_quad1 = make_shared<Quad>(L"Resource/SIUUUU.jpg");
-	_quad2 = make_shared<Quad>(L"Resource/MeGod.jpg");
-	// 행렬변환
-	// WVP : World View Projection
-	// SRT : 좌표이동 == 좌표계변환 
-	// (Local Space) x (World) x (View) x (Projection) => VS : 각 정점에 대한 계산을 수행
+	CreateVertices();
 
-	// SolarSystem
-
-	_quad1->GetTransform()->SetPos(CENTER);
-	_quad1->GetTransform()->SetScale(Vector(0.5f, 0.5f));
-	_quad2->GetTransform()->SetScale(Vector(0.5f, 0.5f));
+	_vs = make_shared<VertexShader>(L"Shader/TutoVertexShader.hlsl");
+	_ps = make_shared<PixelShader>(L"Shader/TutoPixelShader.hlsl");
 }
 
 TutorialScene::~TutorialScene()
@@ -23,15 +15,26 @@ TutorialScene::~TutorialScene()
 
 void TutorialScene::Update()
 {
-	_quad1->GetTransform()->AddAngle(0.001f);
-	_quad2->GetTransform()->AddPos(Vector(1, 1) * 0.001);
 
-	_quad1->Update();
-	_quad2->Update();
 }
 
 void TutorialScene::Render()
 {
-	_quad1->Render();
-	_quad2->Render();
+    _vs->IASetInputLayout();
+    _vertexBuffer->IASet(0);
+
+    _vs->VSSet();
+    _ps->PSSet();
+
+    DC->Draw(_vertices.size(), 0);
+}
+
+void TutorialScene::CreateVertices()
+{
+    _vertices = { {0,0.5f}, {0.5f, -0.5f}, {-0.5f, -0.5f} };
+    _vertices[0].color = { 1,0,0,1 };
+    _vertices[1].color = { 0,1,0,1 };
+    _vertices[2].color = { 0,0,1,1 };
+
+    _vertexBuffer = make_shared<VertexBuffer>(_vertices.data(), sizeof(Vertex_Color), _vertices.size());
 }

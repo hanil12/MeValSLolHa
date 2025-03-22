@@ -35,13 +35,14 @@ Microsoft::WRL::ComPtr<ID3D11RenderTargetView> renderTargetView;
 // -------------------------------------------------
 Microsoft::WRL::ComPtr<ID3D11Buffer> vertexBuffer;
 Microsoft::WRL::ComPtr<ID3D11InputLayout> inputLayOut;
+// 렌더링 파이프라인
 Microsoft::WRL::ComPtr<ID3D11VertexShader> vertexShader;
 Microsoft::WRL::ComPtr<ID3D11PixelShader> pixelShader;
 
-struct Vertex
+struct Vertex_temp
 {
-    Vertex() : pos(XMFLOAT3()) {}
-    Vertex(float x, float y) : pos(x, y, 0) {}
+    Vertex_temp() : pos(XMFLOAT3()) {}
+    Vertex_temp(float x, float y) : pos(x, y, 0) {}
 
     XMFLOAT3 pos;
     XMFLOAT4 color = XMFLOAT4(1,1,1,1);
@@ -50,6 +51,8 @@ struct Vertex
 void Init();
 void Render();
 // -------------------------------------------------
+
+shared_ptr<Program> program;
 
 // 전역 변수:
 HWND hWnd; // 창을 제어하는 얘
@@ -86,7 +89,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_ALGORITHM));
 
-    Init();
+    //Init();
+    Device::Create();
+    TimeManager::Create();
+    InputManager::Create();
+
+    program = make_shared<Program>();
 
     MSG msg;
 
@@ -103,9 +111,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
         else
         {
-            Render();
+            program->Update();
+            program->Render();
         }
     }
+
+    InputManager::Delete();
+    TimeManager::Delete();
+    Device::Delete();
 
     return (int) msg.wParam;
 }
@@ -209,7 +222,7 @@ void Init()
 
     device->CreatePixelShader(pixelBlob->GetBufferPointer(), pixelBlob->GetBufferSize(), nullptr, IN pixelShader.GetAddressOf());
 
-    Vertex vertices[3] = { {0,0.5f}, {0.5f, -0.5f}, {-0.5f, -0.5f} };
+    Vertex_temp vertices[3] = { {0,0.5f}, {0.5f, -0.5f}, {-0.5f, -0.5f} };
     vertices[0].color = { 1,0,0,1 };
     vertices[1].color = { 0,1,0,1 };
     vertices[2].color = { 0,0,1,1 };
@@ -217,7 +230,7 @@ void Init()
     // VertexBuffer 세팅
     D3D11_BUFFER_DESC bd = {};
     bd.Usage = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof(Vertex) * 3;
+    bd.ByteWidth = sizeof(Vertex_temp) * 3;
     bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 
     D3D11_SUBRESOURCE_DATA initData = {};
@@ -236,19 +249,21 @@ void Render()
 
     dc->ClearRenderTargetView(renderTargetView.Get(), clearColor);
 
-    UINT stride = sizeof(Vertex); // Vertex 3
-    UINT offset = 0;
 
+    dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+    
+    UINT stride = sizeof(Vertex_temp); // Vertex 3
+    UINT offset = 0;
     // Input 어셈블러 
     dc->IASetInputLayout(inputLayOut.Get());
 
     dc->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
-    dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
     dc->VSSetShader(vertexShader.Get(), nullptr, 0);
     dc->PSSetShader(pixelShader.Get(), nullptr, 0);
 
     dc->Draw(3, 0);
+
 
     swapChain->Present(0, 0);
 }

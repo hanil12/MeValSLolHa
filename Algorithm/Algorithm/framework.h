@@ -26,8 +26,46 @@
 
 #pragma comment(lib,"d3d11.lib")
 #pragma comment(lib,"d3dcompiler.lib")
+#pragma comment(lib,"dxguid.lib")
 
 using namespace std;
 using namespace DirectX;
 
+#include "Core/Device/Device.h"
 
+// MATH
+#include "Core/Math/Vector.h"
+#include "Core/Math/Transform.h"
+
+// RENDER
+#include "Core/Render/VertexLayout.h"
+#include "Core/Render/VertexBuffer.h"
+#include "Core/Render/IndexBuffer.h"
+#include "Core/Render/VertexShader.h"
+#include "Core/Render/PixelShader.h"
+
+// BUFFER
+#include "Core/Buffers/ConstantBuffer.h"
+#include "Core/Buffers/BufferLayout.h"
+
+// Utility
+#include "Core/Utility/InputManager.h"
+#include "Core/Utility/TimeManager.h"
+
+// Collider
+#include "Core/Math/Collider/RectCollider.h"
+#include "Core/Math/Collider/CircleCollider.h"
+
+// OBJECTS - bagic
+#include "Objects/Bagic/Quad.h"
+
+// SCENE
+#include "Scene/Scene.h"
+
+// PROGRAM
+#include "Program/Program.h"
+
+#include "GMacro.h"
+
+extern HWND hWnd;
+extern Vector mousePos;
