@@ -44,6 +44,7 @@ struct Vertex
     Vertex(float x, float y) : pos(x, y, 0) {}
 
     XMFLOAT3 pos;
+    XMFLOAT4 color = XMFLOAT4(1,1,1,1);
 };
 
 void Init();
@@ -185,6 +186,12 @@ void Init()
             "POSITION",0,DXGI_FORMAT_R32G32B32_FLOAT,0,0,
             D3D11_INPUT_PER_VERTEX_DATA,0
         }
+        ,
+        {
+            // Semantic Name
+            "COLOR",0,DXGI_FORMAT_R32G32B32A32_FLOAT,0,12,
+            D3D11_INPUT_PER_VERTEX_DATA,0
+        }
     };
 
     UINT layoutSize = ARRAYSIZE(layout);
@@ -203,6 +210,9 @@ void Init()
     device->CreatePixelShader(pixelBlob->GetBufferPointer(), pixelBlob->GetBufferSize(), nullptr, IN pixelShader.GetAddressOf());
 
     Vertex vertices[3] = { {0,0.5f}, {0.5f, -0.5f}, {-0.5f, -0.5f} };
+    vertices[0].color = { 1,0,0,1 };
+    vertices[1].color = { 0,1,0,1 };
+    vertices[2].color = { 0,0,1,1 };
 
     // VertexBuffer 세팅
     D3D11_BUFFER_DESC bd = {};
