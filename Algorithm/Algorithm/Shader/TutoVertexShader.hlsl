@@ -1,4 +1,13 @@
 
+cbuffer View : register(b1)
+{
+    matrix view;
+};
+
+cbuffer Projection : register(b2)
+{
+    matrix projection;
+};
 
 struct VertexInput
 {
@@ -15,8 +24,10 @@ struct VertexOutput
 VertexOutput VS(VertexInput input)
 {
     VertexOutput result;
-    result.pos = input.pos;
+    input.pos = mul(input.pos, view);
+    input.pos = mul(input.pos, projection);
     result.color = input.color;
+    result.pos = input.pos;
     
     return result;
 }

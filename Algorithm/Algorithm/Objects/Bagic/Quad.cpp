@@ -1,29 +1,9 @@
 #include "framework.h"
 #include "Quad.h"
 
-Quad::Quad(wstring textureFile)
+Quad::Quad()
 {
-	CreateMaterial(textureFile);
-	CreateMesh();
 
-    _transform = make_shared<Transform>();
-    _leftRightBuffer = make_shared<LeftRightBuffer>();
-    SetLeftRight(0);
-    _colorBuffer = make_shared<ColorBuffer>();
-    AddColor(XMFLOAT4(0, 0, 0, 0));
-}
-
-Quad::Quad(wstring textureFile, Vector size)
-{
-    _halfSize = size * 0.5f;
-    CreateMaterial(textureFile);
-    CreateMesh();
-
-    _transform = make_shared<Transform>();
-    _leftRightBuffer = make_shared<LeftRightBuffer>();
-    SetLeftRight(0);
-    _colorBuffer = make_shared<ColorBuffer>();
-    AddColor(XMFLOAT4(0, 0, 0, 0));
 }
 
 Quad::~Quad()
@@ -32,49 +12,10 @@ Quad::~Quad()
 
 void Quad::Update()
 {
-    _transform->Update();
+
 }
 
 void Quad::Render()
 {
-    _vs->IASetInputLayout();
 
-    _vertexBuffer->IASet(0);
-    _indexBuffer->IASetIndexBuffer();
-
-    _vs->VSSet();
-    _ps->PSSet();
-    _transform->SetVS(0);
-    _leftRightBuffer->SetPS(0);
-    _colorBuffer->SetPS(1);
-
-    DC->DrawIndexed(_indices.size(), 0, 0);
-}
-
-void Quad::CreateMaterial(wstring textureFile)
-{
-    _vs = make_shared<VertexShader>(L"Shaders/TextureVertexShader.hlsl");
-    _ps = make_shared<PixelShader>(L"Shaders/TexturePixelShader.hlsl");
-}
-
-void Quad::CreateMesh()
-{
-	_vertices =
-    {
-        { XMFLOAT3(-_halfSize.x, _halfSize.y, 0.0f), XMFLOAT2(0,0) }, //  좌측 상단
-        { XMFLOAT3(_halfSize.x, _halfSize.y, 0.0f), XMFLOAT2(1,0)}, // 우측 상단
-        { XMFLOAT3(_halfSize.x, -_halfSize.y, 0.0f), XMFLOAT2(1,1) }, // 우측 하단
-        { XMFLOAT3(-_halfSize.x, -_halfSize.y, 0.0f), XMFLOAT2(0,1)}, // 좌측 하단
-    };
-
-    _indices.push_back(0);
-    _indices.push_back(1);
-    _indices.push_back(2);
-
-    _indices.push_back(0);
-    _indices.push_back(2);
-    _indices.push_back(3);
-
-    _vertexBuffer = make_shared<VertexBuffer>(_vertices.data(), sizeof(Vertex_Texture), _vertices.size(), 0);
-    _indexBuffer = make_shared<IndexBuffer>(&_indices[0], _indices.size());
 }
