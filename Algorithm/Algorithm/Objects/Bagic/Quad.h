@@ -12,6 +12,9 @@ public:
 
 	shared_ptr<Transform> GetTransform() { return _transform; }
 
+	void SetVS(shared_ptr<VertexShader> vs) { _vs = vs; }
+	void SetPS(shared_ptr<PixelShader> ps) { _ps = ps; }
+
 private:
 	void CreateVertices();
 	void CreateVertices(Vector halfSize);

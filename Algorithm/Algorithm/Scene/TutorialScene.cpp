@@ -18,11 +18,14 @@ TutorialScene::TutorialScene()
 			Vector pos = offset;
 			pos.x += gap.x * x;
 			pos.y -= gap.y * y;
-			block->GetTransform()->SetPos(pos);
+			block->SetPos(pos);
+			block->SetType(Block::BlockType::ABLE);
 
 			_blocks[y].push_back(block);
 		}
 	}
+
+	//_blocks[0][0]->GetTransform()->AddPos(Vector(-100, 0));
 }
 
 TutorialScene::~TutorialScene()
