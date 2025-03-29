@@ -9,6 +9,6 @@ public:
 	void Render() override;
 
 private:
-	shared_ptr<Quad> _quad;
+	vector<vector<shared_ptr<class Block>>> _blocks;
 };
 

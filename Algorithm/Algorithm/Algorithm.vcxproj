@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm.h" />
+    <ClInclude Include="Objects\Maze\Block.h" />
     <ClInclude Include="Core\Buffers\BufferLayout.h" />
     <ClInclude Include="Core\Buffers\ConstantBuffer.h" />
     <ClInclude Include="Core\Device\Device.h" />
@@ -171,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="Objects\Maze\Block.cpp" />
     <ClCompile Include="Core\Buffers\ConstantBuffer.cpp" />
     <ClCompile Include="Core\Device\Device.cpp" />
     <ClCompile Include="Core\Math\Transform.cpp" />

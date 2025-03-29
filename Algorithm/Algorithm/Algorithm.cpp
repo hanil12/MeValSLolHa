@@ -123,151 +123,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return (int) msg.wParam;
 }
 
-void Init()
-{
-#pragma region Device, DC, SwapChain, RenderTarget
-    RECT rect;
-    GetClientRect(hWnd, &rect);
-    UINT width = rect.right - rect.left;
-    UINT height = rect.bottom - rect.top;
-
-    D3D_FEATURE_LEVEL featureLevels[] =
-    {
-        D3D_FEATURE_LEVEL_11_0,
-        D3D_FEATURE_LEVEL_10_1,
-        D3D_FEATURE_LEVEL_10_0,
-    };
-
-    UINT featureSize = ARRAYSIZE(featureLevels);
-
-    DXGI_SWAP_CHAIN_DESC sd = {};
-    sd.BufferCount = 1;
-    sd.BufferDesc.Width = width;
-    sd.BufferDesc.Height = height;
-    sd.BufferDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
-    sd.BufferDesc.RefreshRate.Numerator = 60;
-    sd.BufferDesc.RefreshRate.Denominator = 1;
-    // Numerator / Denominator = 화면 프레임 갱신 최고 속도
-
-    sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
-    sd.OutputWindow = hWnd;
-    sd.SampleDesc.Count = 1;
-    sd.SampleDesc.Quality = 0;
-    sd.Windowed = true; // 창모드
-
-    auto hResult = D3D11CreateDeviceAndSwapChain
-    (
-        nullptr,
-        D3D_DRIVER_TYPE_HARDWARE,
-        0,
-        D3D11_CREATE_DEVICE_DEBUG,
-        featureLevels,
-        featureSize,
-        D3D11_SDK_VERSION,
-        &sd,
-        IN swapChain.GetAddressOf(),
-        IN device.GetAddressOf(),
-        nullptr,
-        IN dc.GetAddressOf()
-    );
-
-    Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
-
-    swapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)backBuffer.GetAddressOf());
-    device->CreateRenderTargetView(backBuffer.Get(), nullptr, renderTargetView.GetAddressOf());
-
-    dc->OMSetRenderTargets(1, renderTargetView.GetAddressOf(), nullptr);
-
-    D3D11_VIEWPORT vp;
-    vp.Width = width;
-    vp.Height = height;
-    vp.MinDepth = 0.0f;
-    vp.MaxDepth = 1.0f;
-    vp.TopLeftX = 0;
-    vp.TopLeftY = 0;
-    dc->RSSetViewports(1, &vp);
-
-#pragma endregion
-
-// VertexInputLayOut -> VertexShader -> PixelShader
-
-    // Vertex Shader에 들어갈 때, 데이터(Vertex, 색.. 등등)들의 설명서
-    D3D11_INPUT_ELEMENT_DESC layout[] =
-    {
-        {
-            // Semantic Name
-            "POSITION",0,DXGI_FORMAT_R32G32B32_FLOAT,0,0,
-            D3D11_INPUT_PER_VERTEX_DATA,0
-        }
-        ,
-        {
-            // Semantic Name
-            "COLOR",0,DXGI_FORMAT_R32G32B32A32_FLOAT,0,12,
-            D3D11_INPUT_PER_VERTEX_DATA,0
-        }
-    };
-
-    UINT layoutSize = ARRAYSIZE(layout);
-
-    DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
-
-    Microsoft::WRL::ComPtr<ID3DBlob> vertexBlob; // VertexShader를 만들 때 필요한 얘
-    D3DCompileFromFile(L"Shader/TutoVertexShader.hlsl", nullptr, nullptr, "VS", "vs_5_0", flags, 0, vertexBlob.GetAddressOf(), nullptr);
-
-    device->CreateInputLayout(layout, layoutSize, vertexBlob->GetBufferPointer(), vertexBlob->GetBufferSize(), inputLayOut.GetAddressOf());
-    device->CreateVertexShader(vertexBlob->GetBufferPointer(), vertexBlob->GetBufferSize(), nullptr, IN vertexShader.GetAddressOf());
-
-    Microsoft::WRL::ComPtr<ID3DBlob> pixelBlob; // PixelShader를 만들 때 필요한 얘
-    D3DCompileFromFile(L"Shader/TutoPixelShader.hlsl", nullptr, nullptr, "PS", "ps_5_0", flags, 0, pixelBlob.GetAddressOf(), nullptr);
-
-    device->CreatePixelShader(pixelBlob->GetBufferPointer(), pixelBlob->GetBufferSize(), nullptr, IN pixelShader.GetAddressOf());
-
-    Vertex_temp vertices[3] = { {0,0.5f}, {0.5f, -0.5f}, {-0.5f, -0.5f} };
-    vertices[0].color = { 1,0,0,1 };
-    vertices[1].color = { 0,1,0,1 };
-    vertices[2].color = { 0,0,1,1 };
-
-    // VertexBuffer 세팅
-    D3D11_BUFFER_DESC bd = {};
-    bd.Usage = D3D11_USAGE_DEFAULT;
-    bd.ByteWidth = sizeof(Vertex_temp) * 3;
-    bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-
-    D3D11_SUBRESOURCE_DATA initData = {};
-    initData.pSysMem = &vertices[0];
-
-    device->CreateBuffer(&bd, &initData, vertexBuffer.GetAddressOf());
-}
-
-void Render()
-{
-    FLOAT myColorR = 0.0f;
-    FLOAT myColorG = 0.0f;
-    FLOAT myColorB = 0.0f;
-
-    FLOAT clearColor[4] = { myColorR, myColorG, myColorB, 1.0f };
-
-    dc->ClearRenderTargetView(renderTargetView.Get(), clearColor);
-
-
-    dc->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-    
-    UINT stride = sizeof(Vertex_temp); // Vertex 3
-    UINT offset = 0;
-    // Input 어셈블러 
-    dc->IASetInputLayout(inputLayOut.Get());
-
-    dc->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
-
-    dc->VSSetShader(vertexShader.Get(), nullptr, 0);
-    dc->PSSetShader(pixelShader.Get(), nullptr, 0);
-
-    dc->Draw(3, 0);
-
-
-    swapChain->Present(0, 0);
-}
-
 //
 //  함수: MyRegisterClass()
 //
@@ -309,13 +164,14 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
    hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      0, 0, WIN_WIDTH, WIN_HEIGHT, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
       return FALSE;
    }
 
+   SetMenu(hWnd, nullptr);
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
