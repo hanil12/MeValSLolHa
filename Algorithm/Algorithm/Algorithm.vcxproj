@@ -165,6 +165,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="GMacro.h" />
     <ClInclude Include="Objects\Bagic\Quad.h" />
+    <ClInclude Include="Objects\Maze\Player.h" />
     <ClInclude Include="Program\Program.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene\Scene.h" />
@@ -196,6 +197,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">framework.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="Objects\Bagic\Quad.cpp" />
+    <ClCompile Include="Objects\Maze\Player.cpp" />
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\TutorialScene.cpp" />

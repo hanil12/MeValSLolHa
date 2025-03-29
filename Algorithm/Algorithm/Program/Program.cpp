@@ -39,7 +39,6 @@ void Program::Render()
     FLOAT clearColor[4] = { myColorR, myColorG, myColorB, 1.0f };
 
     DC->ClearRenderTargetView(Device::Instance()->GetRTV().Get(), clearColor);
-
     
     DC->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 

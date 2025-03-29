@@ -43,6 +43,9 @@ void Block::SetType(BlockType type)
 	case Block::DISABLE:
 		_colorBuffer->SetData({ 1,0,0,1 });
 		break;
+	case Block::PLAYER:
+		_colorBuffer->SetData({ 0,0,1,1 });
+		break;
 	default:
 		break;
 	}

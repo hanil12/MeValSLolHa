@@ -6,7 +6,8 @@ public:
 	{
 		NONE,
 		ABLE,
-		DISABLE
+		DISABLE,
+		PLAYER
 	};
 
 	Block();
@@ -17,6 +18,7 @@ public:
 
 	void SetPos(Vector pos) { _quad->GetTransform()->SetPos(pos); }
 	void SetType(BlockType type);
+	BlockType GetType() { return _type; }
 
 private:
 	BlockType _type;
