@@ -30,5 +30,8 @@ private:
 	vector<Vector> _path;
 	int _pathIndex = 0;
 	float _time = 0.0f;
+
+	vector<vector<int>> _discovered;
+	vector<vector<Vector>> _parent;
 };
 

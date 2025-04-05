@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <list>
 #include <stack>
 #include <queue>
 
@@ -11,10 +12,31 @@ using namespace std;
 // 3. 그래프 조사하기
 // - 누가 발견했는지
 // - 컴퓨터 공학의 그래프 표현 방법
+template <typename T, typename Container = deque<T>>
+class Queue
+{
+public:
+	void push(const T& data)
+	{
+		container.push_back(data);
+	}
+
+	void pop()
+	{
+		container.pop_front();
+	}
+
+	const T& front() { return container.front(); }
+
+	bool empty() { return container.empty(); }
+
+private:
+	Container container;
+};
 
 int main()
 {
-	queue<int> q;
+	Queue<int> q;
 
 	q.push(5);
 	q.push(1);
