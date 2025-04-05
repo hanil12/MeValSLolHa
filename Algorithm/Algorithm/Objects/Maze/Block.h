@@ -7,7 +7,8 @@ public:
 		NONE,
 		ABLE,
 		DISABLE,
-		PLAYER
+		PLAYER,
+		FOOTPRINT
 	};
 
 	Block();

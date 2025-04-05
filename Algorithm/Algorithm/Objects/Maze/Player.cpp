@@ -29,13 +29,10 @@ void Player::Update()
 
 		if (_pathIndex != 0)
 		{
-			// TODO : 발자취
+			_maze.lock()->SetBlockType(_pos, Block::PLAYER);
 		}
 		_pathIndex++;
 	}
-
-	// 미로에서 Player 색을 칠하기
-	_maze.lock()->SetBlockType(_pos, Block::BlockType::PLAYER);
 }
 
 void Player::FindPath_RightHand()
@@ -75,12 +72,14 @@ void Player::FindPath_RightHand()
 			dir = (Direction)newDir;
 			pos = newPos;
 			_path.push_back(pos);
+			_maze.lock()->SetBlockType(pos, Block::BlockType::FOOTPRINT);
 		}
 		// 오른쪽이 막혀있고, 앞이 뚫려 있다.
 		else if(Cango(oldPos))
 		{
 			pos = oldPos;
 			_path.push_back(pos);
+			_maze.lock()->SetBlockType(pos, Block::BlockType::FOOTPRINT);
 		}
 		// 오른쪽 막혀있음, 앞도 막혀있다.
 		else
@@ -89,6 +88,29 @@ void Player::FindPath_RightHand()
 			dir = static_cast<Direction>((dir - 1 + DIR_COUNT) % DIR_COUNT);
 		}
 	}
+
+	_path.push_back(maze->EndPos());
+	stack<Vector> s;
+
+	for (int i = 0; i < _path.size() - 1; i++)
+	{
+		if (s.empty() == false && s.top() == _path[i + 1])
+			s.pop();
+		else
+			s.push(_path[i]);
+	}
+
+	_path.clear();
+	
+	while (true)
+	{
+		if (s.empty() == true)
+			break;
+		_path.push_back(s.top());
+		s.pop();
+	}
+
+	std::reverse(_path.begin(), _path.end());
 }
 
 bool Player::Cango(Vector pos)

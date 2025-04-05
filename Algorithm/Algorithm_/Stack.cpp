@@ -9,10 +9,26 @@ using namespace std;
 // 2. Stack을 이용해서 RightHand 개선해보기
 
 
-template <typename T>
+template <typename T, typename Container = vector<T>>
 class Stack
 {
+public:
+	void push(const T& data)
+	{
+		container.push_back(data);
+	}
 
+	void pop()
+	{
+		container.pop_back();
+	}
+
+	const T& top() { return container.back(); }
+
+	bool empty() { return container.empty(); }
+
+private:
+	Container container;
 };
 
 int main()
