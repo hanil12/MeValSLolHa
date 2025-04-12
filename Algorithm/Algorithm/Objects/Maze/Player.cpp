@@ -8,7 +8,7 @@ Player::Player(shared_ptr<Maze> maze)
 : _maze(maze)
 {
 	_maze.lock()->SetBlockType(_pos, Block::BlockType::PLAYER);
-	FindPath_RightHand();
+	BFS();
 }
 
 Player::~Player()
@@ -108,6 +108,64 @@ void Player::FindPath_RightHand()
 			break;
 		_path.push_back(s.top());
 		s.pop();
+	}
+
+	std::reverse(_path.begin(), _path.end());
+}
+
+void Player::BFS()
+{
+	Vector frontPos[4] =
+	{
+		Vector(0,-1), // UP
+		Vector(1,0), // RIGHT
+		Vector(0,1), // DOWN
+		Vector(-1,0) // LEFT
+	};
+
+	_parent.resize(MAX_Y, vector<Vector>(MAX_X, Vector(-1, -1)));
+	_discovered.resize(MAX_Y, vector<bool>(MAX_X, false));
+
+	queue<Vector> q;
+	Vector start = _maze.lock()->StartPos();
+	Vector end = _maze.lock()->EndPos();
+	_parent[start.y][start.x] = start;
+	_discovered[start.y][start.x] = true;
+
+	q.push(start);
+	while (true)
+	{
+		Vector here = q.front();
+		if (here == end)
+			break;
+
+		q.pop();
+
+		for (int i = 0; i < 4; i++)
+		{
+			Vector there = here + frontPos[i];
+
+			if (Cango(there) == false)
+				continue;
+			if (_discovered[there.y][there.x])
+				continue;
+
+			q.push(there);
+			_parent[there.y][there.x] = here;
+			_discovered[there.y][there.x] = true;
+			_maze.lock()->SetBlockType(there, Block::BlockType::FOOTPRINT);
+		}
+	}
+
+	Vector check = end;
+	_path.push_back(end);
+	while (true)
+	{
+		if (check == start)
+			break;
+
+		check = _parent[check.y][check.x];
+		_path.push_back(check);
 	}
 
 	std::reverse(_path.begin(), _path.end());

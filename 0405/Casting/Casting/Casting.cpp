@@ -8,6 +8,7 @@ using namespace std;
 // - dynamic cast
 // - const cast
 // - reinterpret cast
+// 싱글턴          
 
 // int -> float (안전)
 // float -> int (불안전)
@@ -24,6 +25,7 @@ using namespace std;
 // - const cast : const를 붙히거나 뗄 때
 
 // reinterpret cast : 재해석, 자료형을 그냥 무조건 강제로 바꾸는 cast
+
 class Player
 {
 public:
