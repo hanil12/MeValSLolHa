@@ -5,8 +5,8 @@ Quad::Quad()
 {
 	CreateVertices();
 
-	_vs = make_shared<VertexShader>(L"Shader/TutoVertexShader.hlsl");
-	_ps = make_shared<PixelShader>(L"Shader/TutoPixelShader.hlsl");
+    _vs = ADD_VS(L"Shader/TutoVertexShader.hlsl");
+	_ps = ADD_PS(L"Shader/TutoPixelShader.hlsl");
 
     _transform = make_shared<Transform>();
 }
@@ -15,8 +15,8 @@ Quad::Quad(Vector halfSize)
 {
     CreateVertices(halfSize);
 
-    _vs = make_shared<VertexShader>(L"Shader/TutoVertexShader.hlsl");
-    _ps = make_shared<PixelShader>(L"Shader/TutoPixelShader.hlsl");
+    _vs = ADD_VS(L"Shader/TutoVertexShader.hlsl");
+    _ps = ADD_PS(L"Shader/TutoPixelShader.hlsl");
 
     _transform = make_shared<Transform>();
 }

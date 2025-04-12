@@ -1,5 +1,5 @@
 #pragma once
-class VertexShader
+class VertexShader : public Shader
 {
 public:
 	VertexShader(wstring file);
@@ -10,14 +10,13 @@ public:
 	void VSSet();
 
 private:
-	void CreateBlob(wstring file);
+	void CreateBlob(wstring file) override;
 	void CreateInputLayOut();
 	void CreateVertexShader();
-
-	Microsoft::WRL::ComPtr<ID3DBlob> _vertexBlob;
 
 	Microsoft::WRL::ComPtr<ID3D11InputLayout> _inputLayOut;
 	Microsoft::WRL::ComPtr<ID3D11VertexShader> _vertexShader;
 	Microsoft::WRL::ComPtr<ID3D11ShaderReflection> _reflection;
+
 };
 

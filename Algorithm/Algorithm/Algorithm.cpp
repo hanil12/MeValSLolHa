@@ -93,6 +93,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     Device::Create();
     TimeManager::Create();
     InputManager::Create();
+    ShaderManager::Create();
 
     program = make_shared<Program>();
 
@@ -116,6 +117,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
+    ShaderManager::Delete();
     InputManager::Delete();
     TimeManager::Delete();
     Device::Delete();

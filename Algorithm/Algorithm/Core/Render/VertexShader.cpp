@@ -2,8 +2,9 @@
 #include "VertexShader.h"
 
 VertexShader::VertexShader(wstring file)
+: Shader(file)
 {
-	CreateBlob(file);
+    CreateBlob(file);
 	CreateInputLayOut();
 	CreateVertexShader();
 }
@@ -22,15 +23,9 @@ void VertexShader::VSSet()
     DC->VSSetShader(_vertexShader.Get(), nullptr, 0);
 }
 
-void VertexShader::CreateBlob(wstring file)
-{
-	DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
-	D3DCompileFromFile(file.c_str(), nullptr, nullptr, "VS", "vs_5_0", flags, 0, _vertexBlob.GetAddressOf(), nullptr);
-}
-
 void VertexShader::CreateInputLayOut()
 {
-    D3DReflect(_vertexBlob->GetBufferPointer(), _vertexBlob->GetBufferSize(),
+    D3DReflect(_blob->GetBufferPointer(), _blob->GetBufferSize(),
         IID_ID3D11ShaderReflection, (void**)_reflection.GetAddressOf());
 
     D3D11_SHADER_DESC shaderDesc;
@@ -110,12 +105,19 @@ void VertexShader::CreateInputLayOut()
     }
 
     // Shader 정보 전달
-    DEVICE->CreateInputLayout(inputLayouts.data(), inputLayouts.size(), _vertexBlob->GetBufferPointer(), _vertexBlob->GetBufferSize(),
+    DEVICE->CreateInputLayout(inputLayouts.data(), inputLayouts.size(), _blob->GetBufferPointer(), _blob->GetBufferSize(),
         _inputLayOut.GetAddressOf());
 }
 
 void VertexShader::CreateVertexShader()
 {
-    DEVICE->CreateVertexShader(_vertexBlob->GetBufferPointer(), _vertexBlob->GetBufferSize(), nullptr, IN _vertexShader.GetAddressOf());
+    DEVICE->CreateVertexShader(_blob->GetBufferPointer(), _blob->GetBufferSize(), nullptr, IN _vertexShader.GetAddressOf());
 
 }
+
+void VertexShader::CreateBlob(wstring file)
+{
+    DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
+    D3DCompileFromFile(file.c_str(), nullptr, nullptr, "VS", "vs_5_0", flags, 0, _blob.GetAddressOf(), nullptr);
+}
+

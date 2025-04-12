@@ -2,8 +2,9 @@
 #include "PixelShader.h"
 
 PixelShader::PixelShader(wstring file)
+: Shader(file)
 {
-	CreatePixelBlob(file);
+	CreateBlob(file);
 	CreatePixelShader();
 }
 
@@ -16,7 +17,7 @@ void PixelShader::PSSet()
 	DC->PSSetShader(pixelShader.Get(), nullptr, 0);
 }
 
-void PixelShader::CreatePixelBlob(wstring file)
+void PixelShader::CreateBlob(wstring file)
 {
 	DWORD flags = D3DCOMPILE_ENABLE_STRICTNESS | D3DCOMPILE_DEBUG;
 	D3DCompileFromFile(file.c_str(), nullptr, nullptr, "PS", "ps_5_0", flags, 0, pixelBlob.GetAddressOf(), nullptr);

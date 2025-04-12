@@ -43,8 +43,10 @@ using namespace DirectX;
 #include "Core/Render/VertexLayout.h"
 #include "Core/Render/VertexBuffer.h"
 #include "Core/Render/IndexBuffer.h"
+#include "Core/Render/Shader.h"
 #include "Core/Render/VertexShader.h"
 #include "Core/Render/PixelShader.h"
+#include "Core/Render/ShaderManager.h"
 
 // BUFFER
 #include "Core/Buffers/ConstantBuffer.h"

@@ -1,5 +1,5 @@
 #pragma once
-class PixelShader
+class PixelShader : public Shader
 {
 public:
 	PixelShader(wstring file);
@@ -8,7 +8,7 @@ public:
 	void PSSet();
 
 private:
-	void CreatePixelBlob(wstring file);
+	void CreateBlob(wstring file);
 	void CreatePixelShader();
 
 	Microsoft::WRL::ComPtr<ID3DBlob> pixelBlob;

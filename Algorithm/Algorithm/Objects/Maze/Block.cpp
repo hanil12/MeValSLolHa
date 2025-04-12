@@ -6,8 +6,8 @@ Block::Block()
 	_quad = make_shared<Quad>(Vector(7, 7));
 	_colorBuffer = make_shared<ColorBuffer>();
 
-	_vs = make_shared<VertexShader>(L"Shader/BlockVS.hlsl");
-	_ps = make_shared<PixelShader>(L"Shader/BlockPS.hlsl");
+	_vs = ADD_VS(L"Shader/BlockVS.hlsl");
+	_ps = ADD_PS(L"Shader/BlockPS.hlsl");
 
 	_quad->SetPS(_ps);
 	_quad->SetVS(_vs);

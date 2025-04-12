@@ -21,3 +21,6 @@
 
 #define DELTA_TIME		TimeManager::Instance()->DeltaTime()
 #define RUN_TIME		TimeManager::Instance()->RunTime()
+
+#define ADD_VS(k)		ShaderManager::GetInstance()->AddVS(k)
+#define ADD_PS(k)		ShaderManager::GetInstance()->AddPS(k)

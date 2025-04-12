@@ -170,6 +170,8 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\TutorialScene.h" />
+    <ClInclude Include="Core\Render\Shader.h" />
+    <ClInclude Include="Core\Render\ShaderManager.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +203,8 @@
     <ClCompile Include="Program\Program.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="Scene\TutorialScene.cpp" />
+    <ClCompile Include="Core\Render\Shader.cpp" />
+    <ClCompile Include="Core\Render\ShaderManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Algorithm.rc" />

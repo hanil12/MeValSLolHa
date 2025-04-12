@@ -45,15 +45,61 @@ Node* CreateTree()
 	}
 
 	// 아트 부서
+	{
+		Node* node1 = new Node("아트팀");
+		rootNode->children.push_back(node1);
+		{
+			Node* node1_1 = new Node("일러스트");
+			node1->children.push_back(node1_1);
+		}
+		{
+			Node* node1_1 = new Node("배경");
+			node1->children.push_back(node1_1);
+		}
+		{
+			Node* node1_1 = new Node("모델");
+			node1->children.push_back(node1_1);
+		}
+	}
 
 	// 기획 부서
+	{
+		Node* node1 = new Node("기획팀");
+		rootNode->children.push_back(node1);
+		{
+			Node* node1_1 = new Node("스토리");
+			node1->children.push_back(node1_1);
+		}
+		{
+			Node* node1_1 = new Node("레벨디자인");
+			node1->children.push_back(node1_1);
+		}
+		{
+			Node* node1_1 = new Node("밸런스");
+			node1->children.push_back(node1_1);
+		}
+	}
 
 	return rootNode;
+}
+
+void PrintTree(Node* node, int depth = 0)
+{
+	for (int i = 0; i < depth; i++)
+		cout << "-";
+
+	cout << node->data << endl;
+
+	for (auto child : node->children)
+	{
+		PrintTree(child, depth + 1);
+	}
 }
 
 int main()
 {
 	Node* root = CreateTree();
+	PrintTree(root);
 
 	return 0;
 }
