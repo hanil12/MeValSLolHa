@@ -193,15 +193,20 @@ void Player::AStar()
 		if (hereV.f > best[here.y][here.x])
 			continue;
 
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 8; i++)
 		{
 			Vector there = here + frontPos[i];
 
 			if (Cango(there) == false)
 				continue;
 
-			int newG = hereV.g + 10;
-			int newH = Vector::Manhattan(there, end) * 10;
+			int newG = hereV.g;
+			if (i < 4)
+				newG += 10;
+			else
+				newG += 14;
+
+			int newH = (end - there).Length() * 10;
 			int newF = newG + newH;
 
 			if (newF > best[there.y][there.x])

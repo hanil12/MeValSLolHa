@@ -14,12 +14,16 @@ class Player
 		DIR_COUNT
 	};
 
-	Vector frontPos[4] =
+	Vector frontPos[8] =
 	{
 		Vector(0,-1), // UP
 		Vector(1,0), // RIGHT
 		Vector(0,1), // DOWN
-		Vector(-1,0) // LEFT
+		Vector(-1,0), // LEFT
+		Vector(-1,-1), // DOWN
+		Vector(1,-1), // DOWN
+		Vector(-1,1), // DOWN
+		Vector(1,1), // DOWN
 	};
 
 	struct Vertex

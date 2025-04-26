@@ -60,10 +60,19 @@ struct Functor_IDVALUE
 
 struct Functor_PRICEVALUE
 {
-	
+	bool operator()(Item* item)
+	{
+		if (item->price == price && item->value == value)
+			return true;
+		return false;
+	}
+
+	int price;
+	int value;
 };
 
-Item* FindItem_Functor(Item* arr[], int size, Functor_IDVALUE func) // 함수포인터를 매개변수로 받는 함수
+template<typename T>
+Item* FindItem_Func(Item* arr[], int size, T func) // 함수포인터를 매개변수로 받는 함수
 {
 	for (int i = 0; i < size; i++)
 	{
@@ -73,18 +82,6 @@ Item* FindItem_Functor(Item* arr[], int size, Functor_IDVALUE func) // 함수포인�
 		}
 	}
 }
-
-Item* FindItem_Functor(Item* arr[], int size, Functor_PRICEVALUE func) // 함수포인터를 매개변수로 받는 함수
-{
-	for (int i = 0; i < size; i++)
-	{
-		if (func(arr[i]))
-		{
-			return arr[i];
-		}
-	}
-}
-
 
 int main()
 {
@@ -110,15 +107,23 @@ int main()
 	Functor_IDVALUE functor;
 	functor.id = 3;
 	functor.value = 7;
-	item = FindItem_Functor(arr, 10, functor);
+	item = FindItem_Func<Functor_IDVALUE>(arr, 10, functor);
 	item->PrintItem();
 
 	functor.id = 4;
 	functor.value = 6;
-	item = FindItem_Functor(arr, 10, functor);
+	item = FindItem_Func<Functor_IDVALUE>(arr, 10, functor);
 	item->PrintItem();
 
 	// 아이템 price가 5000이고 value가 5인 얘 찾기
+	Functor_PRICEVALUE functor2;
+	functor2.price = 5000;
+	functor2.value = 5;
+	item = FindItem_Func<Functor_PRICEVALUE>(arr, 10, functor2);
+	item->PrintItem();
+
+	item = FindItem_Func<bool(*)(Item*)>(arr, 10, IDVALUE_Item);
+	item->PrintItem();
 
 	return 0;
 }
