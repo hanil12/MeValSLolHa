@@ -7,12 +7,84 @@ struct Item
 	int id;   // 아이디
 	int price; // 가격
 	int value; // 티어
+
+	void PrintItem() { cout << "id : " << id << ", price : " << price << ", value : " << value << endl; }
 };
 
-void FindItem_ID(Item* arr[], int size, int id)
+Item* FindItem_ID(Item* arr[], int size, int id)
 {
-
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i]->id == id)
+			return arr[i];
+	}
 }
+
+bool ID_Item(Item* item)
+{
+	if (item->id == 5)
+		return true;
+	return false;
+}
+
+bool IDVALUE_Item(Item* item)
+{
+	if (item->value == 7 && item->id == 3)
+		return true;
+	return false;
+}
+
+Item* FindItem_FuncPtr(Item* arr[], int size, bool(*func)(Item*)) // 함수포인터를 매개변수로 받는 함수
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (func(arr[i]))
+		{
+			return arr[i];
+		}
+	}
+}
+
+struct Functor_IDVALUE
+{
+	bool operator()(Item* item)
+	{
+		if (item->id == id && item->value == value)
+			return true;
+		return false;
+	}
+
+	int id;
+	int value;
+};
+
+struct Functor_PRICEVALUE
+{
+	
+};
+
+Item* FindItem_Functor(Item* arr[], int size, Functor_IDVALUE func) // 함수포인터를 매개변수로 받는 함수
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (func(arr[i]))
+		{
+			return arr[i];
+		}
+	}
+}
+
+Item* FindItem_Functor(Item* arr[], int size, Functor_PRICEVALUE func) // 함수포인터를 매개변수로 받는 함수
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (func(arr[i]))
+		{
+			return arr[i];
+		}
+	}
+}
+
 
 int main()
 {
@@ -27,10 +99,26 @@ int main()
 	}
 
 	// 아이템 아이디가 5인 얘 찾기
+	Item* item = FindItem_FuncPtr(arr, 10, &ID_Item);
+	cout << item->id << ", " << item->price << ", " << item->value << endl;
 
 	// 아이템 아이디가 3이고 value가 7인 얘 찾기
+	item = FindItem_FuncPtr(arr, 10, &IDVALUE_Item);
+	item->PrintItem();
 
-	// 아이템 price가 5000이고 value가 3인 얘 찾기
+	// 아이템 아이디가 3이고 value가 7인 얘 찾기
+	Functor_IDVALUE functor;
+	functor.id = 3;
+	functor.value = 7;
+	item = FindItem_Functor(arr, 10, functor);
+	item->PrintItem();
+
+	functor.id = 4;
+	functor.value = 6;
+	item = FindItem_Functor(arr, 10, functor);
+	item->PrintItem();
+
+	// 아이템 price가 5000이고 value가 5인 얘 찾기
 
 	return 0;
 }
