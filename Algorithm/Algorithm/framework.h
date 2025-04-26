@@ -21,6 +21,7 @@
 #include <memory>
 #include <string>
 #include <wrl/client.h>
+#include <iostream>
 
 #include <d3d11.h>
 #include <d3dcompiler.h>

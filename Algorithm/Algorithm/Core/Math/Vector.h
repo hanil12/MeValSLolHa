@@ -74,4 +74,9 @@ public:
 	}
 
 	float Angle() { return atan2(y, x); }
+
+	static int Manhattan(const Vector& start, const Vector& end)
+	{
+		return abs(start.x - end.x) + abs(start.y - end.y);
+	}
 };

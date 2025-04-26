@@ -15,6 +15,10 @@ struct Vertex
 {
 	int v;
 	int cost;
+	// AStar : 끝점 정보를 알고있다는 전제
+
+	int h; // 휴리스틱 함수 : 현재 위치에서 끝점까지의 거리
+	int f; // cost + h
 
 	bool operator>(const Vertex& other) const
 	{

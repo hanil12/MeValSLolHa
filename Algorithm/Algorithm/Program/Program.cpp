@@ -5,6 +5,8 @@
 
 Program::Program()
 {
+    srand((unsigned int)(time(nullptr)));
+
     _scene = make_shared<TutorialScene>();
 
     _view = make_shared<MatrixBuffer>();
