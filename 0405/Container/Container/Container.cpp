@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "Vector.h"
+#include "List.h"
 
 // 정적배열 vs 동적배열
 // 정적배열
@@ -29,6 +30,11 @@ using namespace std;
 // list의 단접
 // 1. 임의접근,인덱스 연산[]이 N만큼의 시간복잡도를 갖는다.
 // --------------------------------------------------
+
+
+// iterator
+// 반복자 (순회자)
+// => 모든 컨테이너가 순회하고 싶다고할 때 방법이 모두 다르다.
 
 int main()
 {
@@ -58,16 +64,37 @@ int main()
 	//cout << "사이즈 : " << v.size() << endl;
 #pragma endregion
 
-	list<int> l;
-	l.push_back(0);
-	l.push_back(1);
-	l.push_back(2);
-	l.push_back(3);
+#pragma region List
+	//List<int> l;
+	//l.push_back(0);
+	//l.push_back(1);
+	//l.push_back(2);
+	//l.push_back(3);
 
-	l.push_front(5);
-	l.push_front(-1);
+	//l.push_front(5);
+	//l.push_front(-1);
 
-	
+	//l.insert(l[2], 10);
+
+	//for (int i = 0; i < l.size(); i++)
+	//{
+	//	cout << l[i]->data << endl;
+	//}
+#pragma endregion
+
+	List<int> v;
+	for (int i = 0; i < 10; i++)
+	{
+		v.push_back(i);
+	}
+
+	// :: 범위지정연산자 => 어디 산하에 있다.
+	List<int>::iterator vIter;
+
+	for (vIter = v.begin(); vIter != v.end(); vIter++)
+	{
+		cout << *vIter << endl;
+	}
 
 	return 0;
 }
