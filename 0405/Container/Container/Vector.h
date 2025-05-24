@@ -1,8 +1,59 @@
 #pragma once
 
+template <typename T>
 class Vector
 {
 public:
+	class iterator
+	{
+	public:
+		iterator() : _ptr(nullptr) {}
+		iterator(T* data) : _ptr(data) {}
+		~iterator() = default;
+
+		iterator& operator=(const iterator& other)
+		{
+			_ptr = other._ptr;
+
+			return *this;
+		}
+
+		bool operator!=(const iterator& other) const
+		{
+			return _ptr != other._ptr;
+		}
+		bool operator==(const iterator& other) const
+		{
+			return _ptr == other._ptr;
+		}
+
+		// 3. 전위,후위 증감연산자
+		iterator operator++(int)
+		{
+			iterator result;
+			result = *this;
+
+			_ptr++;
+
+			return result;
+		}
+
+		iterator& operator++()
+		{
+			_ptr++;
+			return *this;
+		}
+
+		// 4. 간접연산자
+		T& operator*()
+		{
+			return *_ptr;
+		}
+
+	private:
+		T* _ptr;
+	};
+
 	Vector() : _data(nullptr), _size(0), _capacity(0) { }
 	~Vector()
 	{
@@ -17,7 +68,7 @@ public:
 		_capacity = newCapacity;
 
 		// 생성
-		int* newData = new int[newCapacity];
+		T* newData = new T[newCapacity];
 
 		// 복사
 		for (int i = 0; i < _size; i++)
@@ -31,7 +82,7 @@ public:
 		_data = newData;
 	}
 
-	void push_back(const int& value)
+	void push_back(const T& value)
 	{
 		// 꽉찬 상황
 		if (_size == _capacity)
@@ -62,7 +113,7 @@ public:
 	int size() { return _size; }
 	int capacity() { return _capacity; }
 
-	int& operator[](unsigned int index)
+	T& operator[](unsigned int index)
 	{
 		if (index >= _size)
 		{
@@ -73,9 +124,12 @@ public:
 		return _data[index];
 	}
 
+	iterator begin() { return iterator(_data); }
+	iterator end() { return iterator(_data + _size); }
+
 private:
 	int _size;
 	int _capacity;
 
-	int* _data;
+	T* _data;
 };
